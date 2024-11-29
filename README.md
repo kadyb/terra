@@ -2,7 +2,9 @@
 
 <p align="right"; style="font-size:11px">logo by Zane Dax</p>
 
-[![rcmdcheck](https://github.com/rspatial/terra/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/rspatial/terra/actions/workflows/rcmdcheck.yml)
+DODALEM NOWA LINIE KODU
+
+[google.pl](www.google.pl)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/terra)](https://cran.r-project.org/package=terra)
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/terra)](https://www.r-pkg.org/pkg/terra)
