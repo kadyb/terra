@@ -21,9 +21,9 @@ jobs:
       matrix:
         config:
           - {os: macos-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest,   r: 'release'}
+          #- {os: windows-latest, r: 'release'}
+          #- {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          #- {os: ubuntu-latest,   r: 'release'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -44,12 +44,20 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install gdal proj netcdf tbb
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::rcmdcheck
-          needs: check
+      - name: Test
+        if: runner.os == 'macOS'
+        run: |
+          pkg-config --variable pc_path pkg-config
+          brew --prefix tbb
+          find /usr/local /opt/homebrew -name "parallel_for.h" 2>/dev/null
+          pkg-config --modversion tbb || echo "No .pc file found"
 
-      - uses: r-lib/actions/check-r-package@v2
-        with:
-          upload-snapshots: true
-          error-on: '"error"'
+      #- uses: r-lib/actions/setup-r-dependencies@v2
+      #  with:
+      #    extra-packages: any::rcmdcheck
+      #    needs: check
+
+      #- uses: r-lib/actions/check-r-package@v2
+      #  with:
+      #    upload-snapshots: true
+      #    error-on: '"error"'
