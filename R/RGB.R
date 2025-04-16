@@ -1,4 +1,4 @@
-# Author: Robert J. Hijmans 
+# Author: Robert J. Hijmans
 # Date :  April 2010
 # Version 0.9
 # License GPL v3
