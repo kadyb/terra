@@ -49,7 +49,7 @@ jobs:
         run: |
           pkg-config --variable pc_path pkg-config
           brew --prefix tbb
-          find /usr/opt /opt/homebrew -name "parallel_for.h"
+          find /opt/homebrew -name "parallel_for.h"
 
       - name: Export
         if: runner.os == 'macOS'
