@@ -50,11 +50,7 @@ jobs:
           pkg-config --variable pc_path pkg-config
           brew --prefix tbb
           find /opt/homebrew -name "parallel_for.h"
-
-      - name: Export
-        if: runner.os == 'macOS'
-        run: |
-          export PKG_CONFIG_PATH="/opt/homebrew/opt/tbb"
+          export PKG_CONFIG_PATH="/opt/homebrew/opt/tbb:$PKG_CONFIG_PATH"
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
