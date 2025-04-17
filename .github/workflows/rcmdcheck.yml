@@ -59,7 +59,7 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v2
         env:
-          PKG_CONFIG_PATH: /opt/homebrew/Cellar/tbb/2022.1.0/include/tbb/lib/pkgconfig
+          PKG_CONFIG_PATH: "/opt/homebrew/Cellar/tbb/2022.1.0/include/tbb/lib/pkgconfig"
         with:
           upload-snapshots: true
           error-on: '"error"'
