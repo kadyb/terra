@@ -1,6 +1,54 @@
 # Changelog
 
-## version 1.8-83
+## version 1.8-89
+
+### bug fixes
+
+- `plot<SpatRaster>(add=TRUE)` did not put the legend in the right place
+  if the first raster had a larger extent and the number of cells was
+  larger than maxcell.
+  [\#1979](https://github.com/rspatial/terra/issues/1979) by Mehmet
+  Göktuğ Öztürk
+- `plot<SpatVector>(ext=...)` plotted polygons outside plotting region
+  if argument ‘col’ was used.
+  [\#1986](https://github.com/rspatial/terra/issues/1986) by Márcia
+  Barbosa
+- `plot<SpatRaster>` with an “ext” argument could lead to misalignment
+  as only entire cells were mapped.
+  [\#1989](https://github.com/rspatial/terra/issues/1989) by Márcia
+  Barbosa
+
+### enhancements
+
+- `vect<data.frame>` has improved guessing of variable names (if
+  argument geom is not supplied) and crs (if that argument is not
+  supplied, and gets argument “quiet=TRUE” that can be set to false to
+  get warnings if either of these is guessed.
+  [\#1984](https://github.com/rspatial/terra/issues/1984) and
+  [\#1985](https://github.com/rspatial/terra/issues/1985) by Márcia
+  Barbosa
+- `extract<SpatVector>` is now less memory hungry when using argument
+  layers [\#1983](https://github.com/rspatial/terra/issues/1983) by Kodi
+  Arfer
+- `split<SpatVector>` now behaves like the data.frame method when using
+  multiple split variables
+  [\#1987](https://github.com/rspatial/terra/issues/1987) by
+  WillhKessler
+- `$<-<SpatVector>` now gives an error if the replacement is longer than
+  the data, and a warning if recylcing of a shorter replacement is
+  imperfect. [\#1980](https://github.com/rspatial/terra/issues/1980) by
+  Margaret Bolton
+- `cartogram` gets new arguments “inside” and “exp” and better scaling
+  \[#1982\](<https://github.com/rspatial/terra/issues/1982> by Márcia
+  Barbosa `spatSample<SpatRaster>` gains argument “as.mask”
+  [\#1981](https://github.com/rspatial/terra/issues/1981) by Agustin
+  Lobo
+
+### new
+
+## version 1.8-87
+
+Released 2025-11-28
 
 ### bug fixes
 
@@ -20,11 +68,12 @@
   Zheleznyy
 - `cellFromXY` with NA coordinates returned 1 instead of NA on macOS
   [\#1967](https://github.com/rspatial/terra/issues/1967) by John Baums
-  `stretch` crahed R with very large rasters
+- `stretch` crashed R with very large rasters
   [\#1962](https://github.com/rspatial/terra/issues/1962) by Agustin
-  Lobo `focalReg` did not handle of custom functions with a weights
-  argument [\#1965](https://github.com/rspatial/terra/issues/1965) by
-  Pedro Tarroso
+  Lobo
+- `focalReg` did not handle of custom functions with a weights argument
+  [\#1965](https://github.com/rspatial/terra/issues/1965) by Pedro
+  Tarroso
 
 ### enhancements
 
@@ -35,11 +84,19 @@
 - `stretch` gains argument “bylayer=TRUE”
   [\#1970](https://github.com/rspatial/terra/issues/1970) by Michael
   Sumner
+- `makeValid` gains argument `buffer=FALSE`
+  [\#1955](https://github.com/rspatial/terra/issues/1955) by Márcia
+  Barbosa
+- `plot<SpatVector>` argument “col” can now be a named vector or
+  two-column matrix/data.frame to match character/factor values to
+  colors [\#1976](https://github.com/rspatial/terra/issues/1976) by
+  Richard Cooper
 
 ### new
 
 - `fillHoles` method for SpatRaster
 - `chunk` method to run a non-memory-safe SpatRaster function in chunks
+- `centroids<SpatRaster>` method
 
 ## version 1.8-80
 
@@ -626,7 +683,7 @@ Released 2025-01-13
   [\#1584](https://github.com/rspatial/terra/issues/1584) by Hassan
   Masoomi
 - `merge` now has three alternative algorithms
-  [1366](https://github.com/rspatial/terra/issues/1366) by Hassan
+  [\#1366](https://github.com/rspatial/terra/issues/1366) by Hassan
   Masoomi and [\#1650](https://github.com/rspatial/terra/issues/1650) by
   Agustin Lobo
 
