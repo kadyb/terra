@@ -5,14 +5,12 @@
 - **Robert J. Hijmans**. Maintainer, author.
   [](https://orcid.org/0000-0001-5872-2872)
 
-- **Márcia Barbosa**. Contributor.
-  [](https://orcid.org/0000-0001-8972-7713)
+- **Andrew Brown**. Author. [](https://orcid.org/0000-0002-4565-533X)
+
+- **Márcia Barbosa**. Author. [](https://orcid.org/0000-0001-8972-7713)
 
 - **Roger Bivand**. Contributor.
   [](https://orcid.org/0000-0003-2392-6140)
-
-- **Andrew Brown**. Contributor.
-  [](https://orcid.org/0000-0002-4565-533X)
 
 - **Michael Chirico**. Contributor.
   [](https://orcid.org/0000-0003-0787-087X)
@@ -37,13 +35,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/rspatial/terra/blob/master/DESCRIPTION)
 
-Hijmans R (2025). *terra: Spatial Data Analysis*. R package version
-1.8-89, <https://rspatial.org/>.
+Hijmans R, Brown A, Barbosa M (2026). *terra: Spatial Data Analysis*. R
+package version 1.8-95, <https://rspatial.org/>.
 
     @Manual{,
       title = {terra: Spatial Data Analysis},
-      author = {Robert J. Hijmans},
-      year = {2025},
-      note = {R package version 1.8-89},
+      author = {Robert J. Hijmans and Andrew Brown and Márcia Barbosa},
+      year = {2026},
+      note = {R package version 1.8-95},
       url = {https://rspatial.org/},
     }

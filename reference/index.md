@@ -84,7 +84,8 @@
   equality
 
 - [`animate(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/animate.md)
-  : Animate a SpatRaster
+  [`animate(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/animate.md)
+  : Animate a map
 
 - [`app(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/app.md)
   [`app(`*`<SpatRasterDataset>`*`)`](https://rspatial.github.io/terra/reference/app.md)
@@ -463,7 +464,11 @@
   [`clearVSIcache()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`libVersion()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`unloadGDALdrivers()`](https://rspatial.github.io/terra/reference/gdal.md)
-  : GDAL version, supported file formats, and cache size
+  [`proj_ok()`](https://rspatial.github.io/terra/reference/gdal.md)
+  [`projNetwork()`](https://rspatial.github.io/terra/reference/gdal.md)
+  [`projPaths()`](https://rspatial.github.io/terra/reference/gdal.md) :
+  GDAL version, supported file formats, cache size, and PROJ coordinate
+  transformation control
 
 - [`geom(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/geometry.md)
   : Get the geometry (coordinates) of a SpatVector
@@ -1006,6 +1011,7 @@
   [`sum(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
   [`any(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
   [`all(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
+  [`nany(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
   [`which.min(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
   [`which.max(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)
   [`stdev(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/summarize-generics.md)

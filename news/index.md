@@ -1,6 +1,43 @@
 # Changelog
 
-## version 1.8-89
+## version 1.8-95
+
+### bug fixes
+
+- new implementation of `patches` by Andrew Gene Brown
+  [\#2006](https://github.com/rspatial/terra/pull/2006) that fixes
+  [\#1758](https://github.com/rspatial/terra/issues/1758)
+
+- `project` did not apply the scale/offset values
+  [\#2014](https://github.com/rspatial/terra/issues/2014) by Edgar
+  Castro
+
+### enhancements
+
+- significant speed improvements for classify, subst (one-to-one value
+  replacement), catalyze (one-to-many value replacement), unique (better
+  deduplication), and freq, crosstab, table_utils (unified approach to
+  counting) by Andrew Gene Brown
+  [\#2012](https://github.com/rspatial/terra/pull/2012)
+
+- terra now handles the sf defined “POLYGON FULL” not-so-WKT
+  [\#2013](https://github.com/rspatial/terra/issues/2013) by Alexandre
+  Courtiol
+
+- fixed documentation for “direction” parameter in `flip<SpatRaster>`
+  [\#2016](https://github.com/rspatial/terra/pull/2016) by Jesse
+  Anderson
+
+### new
+
+- `animate<SpatVector>` method by Márcia Barbosa
+  [\#2007](https://github.com/rspatial/terra/issues/2007)
+
+## version 1.8-93
+
+CRAN release: 2026-01-12
+
+Released 2025-01-12
 
 ### bug fixes
 
@@ -17,6 +54,17 @@
   as only entire cells were mapped.
   [\#1989](https://github.com/rspatial/terra/issues/1989) by Márcia
   Barbosa
+- `distance<matrix,missing>` was not working
+  [\#1992](https://github.com/rspatial/terra/issues/1992) by Wencheng
+  Lau-Medrano
+- `polys` ignored argument “border”
+  [\#1997](https://github.com/rspatial/terra/issues/1989) by Márcia
+  Barbosa
+- `describe` works with linux paths starting with a tilde
+  [2003](https://github.com/rspatial/terra/issues/2003) by David Moles
+- `zonal<SpatRaster,SpatRaster>` failed with arguments fun=‘sd’, wide=F.
+  [\#2004](https://github.com/rspatial/terra/issues/2004) by Thomas
+  Estabrook
 
 ### enhancements
 
@@ -39,12 +87,25 @@
   imperfect. [\#1980](https://github.com/rspatial/terra/issues/1980) by
   Margaret Bolton
 - `cartogram` gets new arguments “inside” and “exp” and better scaling
-  \[#1982\](<https://github.com/rspatial/terra/issues/1982> by Márcia
-  Barbosa `spatSample<SpatRaster>` gains argument “as.mask”
+  [\#1982](https://github.com/rspatial/terra/issues/1982) by Márcia
+  Barbosa
+- `spatSample<SpatRaster>` gains argument “as.mask”
   [\#1981](https://github.com/rspatial/terra/issues/1981) by Agustin
   Lobo
+- `vect<character>` now handles MultiSurface geometries (as polygons)
+  [\#1994](https://github.com/rspatial/terra/issues/1994) by Márcia
+  Barbosa
+- `plet<SpatVector>` and `polys<leaflet>` gain argument “lty”
+  [\#1997](https://github.com/rspatial/terra/issues/1989) by Márcia
+  Barbosa
 
 ### new
+
+- `proj_ok` helper function to check if the GDAL/PROJ install is
+  functional [\#1996](https://github.com/rspatial/terra/issues/1996) by
+  Andrew Gene Brown
+- `nany<SpatRaster>` method (`!all` in one step) “nany” is short for
+  “not any”. This is used because “none” creates a conflict
 
 ## version 1.8-87
 
@@ -140,9 +201,10 @@ Released 2025-11-05
   [`leaflet::colorNumeric`](https://rstudio.github.io/leaflet/reference/colorNumeric.html)
   [\#1904](https://github.com/rspatial/terra/issues/1904) by Ignacio
   Marzan
-- argument `animate<SpatRaster>` can now be set to `NA` to not get a
-  shared legend [\#1909](https://github.com/rspatial/terra/pull/1909) by
-  Márcia Barbosa
+- `range` argument to `animate<SpatRaster>` can now be set to `NA` to
+  not get a shared legend
+  [\#1909](https://github.com/rspatial/terra/pull/1909) by Márcia
+  Barbosa
 - `text<SpatRaster>` and `text<SpatVector>` gained argument “jitter=0”
   [\#1910](https://github.com/rspatial/terra/pull/1910) by Márcia
   Barbosa
@@ -167,7 +229,7 @@ Released 2025-11-05
 ### new
 
 - `plet<SpatRasterCollection>` method
-- `cartogram<SpatRaster>` can now return a “circles” (dorling) cartogram
+- `cartogram<SpatRaster>` can now return a “circles” (Dorling) cartogram
   [\#1911](https://github.com/rspatial/terra/issues/1911) by Márcia
   Barbosa
 - `subset<SpatVector>` can now use a Spat object to spatially subset
