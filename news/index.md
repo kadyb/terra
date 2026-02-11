@@ -1,16 +1,30 @@
 # Changelog
 
-## version 1.8-95
+## version 1.8-97
 
 ### bug fixes
 
 - new implementation of `patches` by Andrew Gene Brown
   [\#2006](https://github.com/rspatial/terra/pull/2006) that fixes
   [\#1758](https://github.com/rspatial/terra/issues/1758)
-
 - `project` did not apply the scale/offset values
   [\#2014](https://github.com/rspatial/terra/issues/2014) by Edgar
   Castro
+- `show<SpatRaster>` did not work properly for categorical variables if
+  the min/max values were not specified in the file
+  [\#2023](https://github.com/rspatial/terra/issues/2023) by Kodi Arfer
+- `rast(md=TRUE)` now recognizes non standard calendars
+  [\#2019](https://github.com/rspatial/terra/issues/2019) by Heyang;
+  fixed by Yuxuan Xie with
+  [\#2024](https://github.com/rspatial/terra/pull/2024)
+- `values<SpatVector>` lost integers values \> .Machine\$integer.max.
+  Variables with such values are no longer coerced to integer.
+  [\#2030](https://github.com/rspatial/terra/issues/2030) by Steffen
+  Ehrmann
+- `extract<SpatRaster,SpatVector>` with arguments fun=“table” and
+  weights=FALSE did not work
+  [\#2029](https://github.com/rspatial/terra/issues/2029) by
+  volcanicpine
 
 ### enhancements
 
@@ -19,14 +33,27 @@
   deduplication), and freq, crosstab, table_utils (unified approach to
   counting) by Andrew Gene Brown
   [\#2012](https://github.com/rspatial/terra/pull/2012)
-
 - terra now handles the sf defined “POLYGON FULL” not-so-WKT
   [\#2013](https://github.com/rspatial/terra/issues/2013) by Alexandre
   Courtiol
-
+- Language errors in the documentation fixed by Yuxuan Xie
+  [\#2021](https://github.com/rspatial/terra/pull/2021) and by Krzysztof
+  Dyba [\#2020](https://github.com/rspatial/terra/pull/2020)
 - fixed documentation for “direction” parameter in `flip<SpatRaster>`
   [\#2016](https://github.com/rspatial/terra/pull/2016) by Jesse
   Anderson
+- “pixel count” in a raster/value attribute table is now recoginzed as
+  equivalent to “count” (and not considered a categorical variable)
+  [\#2023](https://github.com/rspatial/terra/issues/2023) by Kodi Arfer
+- `lines<leaflet>` gains argument “popup”
+  [\#2018](https://github.com/rspatial/terra/issues/2018) by Mary Fisher
+- `as.lines<matrix>` gains argument “segments”
+  [\#2008](https://github.com/rspatial/terra/issues/2008) by Márcia
+  Barbosa
+- `freq<SpatRaster>` with argument zones is a SpatRaster now returns the
+  zone values instead of the index
+  [https://github.com/rspatial/terra/issues/2033](#id_2033) by Thomas
+  Estabrook
 
 ### new
 
@@ -37,7 +64,7 @@
 
 CRAN release: 2026-01-12
 
-Released 2025-01-12
+Released 2026-01-12
 
 ### bug fixes
 
@@ -83,7 +110,7 @@ Released 2025-01-12
   [\#1987](https://github.com/rspatial/terra/issues/1987) by
   WillhKessler
 - `$<-<SpatVector>` now gives an error if the replacement is longer than
-  the data, and a warning if recylcing of a shorter replacement is
+  the data, and a warning if recycling of a shorter replacement is
   imperfect. [\#1980](https://github.com/rspatial/terra/issues/1980) by
   Margaret Bolton
 - `cartogram` gets new arguments “inside” and “exp” and better scaling
@@ -251,7 +278,7 @@ Released 2025-09-27
 - `project(mask=TRUE)` could fail with high-resolution global rasters
   because of date-line flipping [SO
   79708536](https://stackoverflow.com/q/79708536/635245) by Patrick
-- `plot(pax=list(mgp=c(1,1,2))` now sets mgp seperately for horizontal
+- `plot(pax=list(mgp=c(1,1,2))` now sets mgp separately for horizontal
   and vertical axes
   [\#1873](https://github.com/rspatial/terra/issues/1873) by Hu shiyu
 - `coltab(x, ..., layer=1)<-` argument layer did not work for layer
@@ -350,7 +377,7 @@ Released 2025-07-18
   [\#1861](https://github.com/rspatial/terra/issues/1861) by Andrea
   Titolo
 - `sprc<character>` now also works for a single datasource raster
-  [\#1860](https://github.com/rspatial/terra/issues/1860) by Anrew Gene
+  [\#1860](https://github.com/rspatial/terra/issues/1860) by Andrew Gene
   Brown
 
 ## version 1.8-54
@@ -376,8 +403,8 @@ Released 2025-06-01
 - `==<SpatRaster>` with multiple layers and categorical comparison
   failed [\#1836](https://github.com/rspatial/terra/issues/1836) by
   Andrew Gene Brown
-- `wrteCDF` failed when writing tags with illegal characters such as “{”
-  or “(”, [\#1811](https://github.com/rspatial/terra/issues/1811) by
+- `writeCDF` failed when writing tags with illegal characters such as
+  “{” or “(”, [\#1811](https://github.com/rspatial/terra/issues/1811) by
   Catalin Sorin Covaci
 - `freq` failed for an empty SpatRaster
   [\#1839](https://github.com/rspatial/terra/issues/1839) by Alex Ilich
@@ -446,7 +473,8 @@ Released 2025-05-09
 ### enhancements
 
 - `init` with a matrix argument now keeps the same row/col values
-  [\#1801](https://github.com/rspatial/terra/issues/1801) Jakub Nowosad
+  [\#1801](https://github.com/rspatial/terra/issues/1801) by Jakub
+  Nowosad
 - `rasterize` now checks for very large numbers and switches to FLT8S if
   detected. [\#1797](https://github.com/rspatial/terra/issues/1797) by
   Evan Muise
