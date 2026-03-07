@@ -92,7 +92,7 @@ Also see the methods in section VIII
 |--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`app`](https://rspatial.github.io/terra/reference/app.md)   | Apply a function to all cells, across layers, typically to summarize (as in [`base::apply`](https://rdrr.io/r/base/apply.html))                                    |
 | [`tapp`](https://rspatial.github.io/terra/reference/tapp.md) | Apply a function to groups of layers (as in [`base::tapply`](https://rdrr.io/r/base/tapply.html) and [`stats::aggregate`](https://rdrr.io/r/stats/aggregate.html)) |
-| [`lapp`](https://rspatial.github.io/terra/reference/lapp.md) | Apply a function to a SpatRaster, using layers as arguments.                                                                                                       |
+| [`lapp`](https://rspatial.github.io/terra/reference/lapp.md) | Apply a function to a SpatRaster, using its layers as arguments.                                                                                                   |
 | [`sapp`](https://rspatial.github.io/terra/reference/sapp.md) | Apply a function to each layer                                                                                                                                     |
 | [`rapp`](https://rspatial.github.io/terra/reference/rapp.md) | Apply a function to a spatially variable range of layers                                                                                                           |
 | —————————                                                    | ——————————————————————————————                                                                                                                                     |
@@ -357,7 +357,7 @@ not need to match each other.
 |                                                                      |                                                                                            |
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [`sprc`](https://rspatial.github.io/terra/reference/sprc.md)         | create a SpatRasterCollection from (a list of) SpatRasters                                 |
-| [`length`](https://rspatial.github.io/terra/reference/dimensions.md) | does the SpatRasterCollection have?                                                        |
+| [`length`](https://rspatial.github.io/terra/reference/dimensions.md) | how many SpatRasters does the SpatRasterCollection have?                                   |
 | [`crop`](https://rspatial.github.io/terra/reference/crop.md)         | crop a SpatRasterCollection                                                                |
 | [`impose`](https://rspatial.github.io/terra/reference/impose.md)     | force the members of SpatRasterCollection to the same geometry                             |
 | [`merge`](https://rspatial.github.io/terra/reference/merge.md)       | merge the members of a SpatRasterCollection                                                |
