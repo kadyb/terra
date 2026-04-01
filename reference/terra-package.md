@@ -67,7 +67,7 @@ Below is a list of some of the most important methods grouped by theme.
 | [`selectRange`](https://rspatial.github.io/terra/reference/selectRange.md) | Select cell values from different layers using an index layer |
 | [`rep`](https://rspatial.github.io/terra/reference/rep.md)                 | Repeat layers or a SpatRaster                                 |
 | [`split`](https://rspatial.github.io/terra/reference/split.md)             | Make a list of single layer SpatRasters                       |
-| [`as.character`](https://rdrr.io/r/base/character.html)                    | Geta a character representation of a SpatRaster geometry      |
+| [`as.character`](https://rdrr.io/r/base/character.html)                    | Get a character representation of a SpatRaster geometry       |
 | —————————                                                                  | ——————————————————————————————                                |
 
 ## II. Changing the spatial extent or resolution
@@ -100,7 +100,7 @@ Also see the methods in section VIII
 |--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`app`](https://rspatial.github.io/terra/reference/app.md)   | Apply a function to all cells, across layers, typically to summarize (as in [`base::apply`](https://rdrr.io/r/base/apply.html))                                    |
 | [`tapp`](https://rspatial.github.io/terra/reference/tapp.md) | Apply a function to groups of layers (as in [`base::tapply`](https://rdrr.io/r/base/tapply.html) and [`stats::aggregate`](https://rdrr.io/r/stats/aggregate.html)) |
-| [`lapp`](https://rspatial.github.io/terra/reference/lapp.md) | Apply a function to a SpatRaster, using its layers as arguments.                                                                                                   |
+| [`lapp`](https://rspatial.github.io/terra/reference/lapp.md) | Apply a function to a SpatRaster, using its layers as arguments                                                                                                    |
 | [`sapp`](https://rspatial.github.io/terra/reference/sapp.md) | Apply a function to each layer                                                                                                                                     |
 | [`rapp`](https://rspatial.github.io/terra/reference/rapp.md) | Apply a function to a spatially variable range of layers                                                                                                           |
 | [`xapp`](https://rspatial.github.io/terra/reference/xapp.md) | Apply a function across two SpatRasters layer-wise                                                                                                                 |
