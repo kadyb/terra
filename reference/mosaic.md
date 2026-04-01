@@ -23,11 +23,11 @@ mosaic(x, fun="mean", filename="", ...)
 
 - x:
 
-  SpatRaster
+  SpatRaster or SpatRasterCollection
 
 - y:
 
-  object of same class as `x`
+  SpatRaster if `x` is a SpatRaster, otherwise missing
 
 - ...:
 
@@ -57,7 +57,7 @@ SpatRaster
 
 ## See also
 
-[`merge`](https://rspatial.github.io/terra/reference/merge.md)
+[`merge`](https://rspatial.github.io/terra/reference/merge.md)`, `[`blend`](https://rspatial.github.io/terra/reference/blend.md)
 
 ## Examples
 

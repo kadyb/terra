@@ -62,12 +62,13 @@ merge(x, y, ...)
 
   integer. You can use 1, 2 or 3 to pick a merge algorithm. algo 1 is
   generally faster than algo 2, but it may have poorer file compression.
-  Algo 1 will resample input rasters (and that may slow it down), but
-  algo 2 does not do that. You can increase the tolerance option to
-  effectively get nearest neighbor resampling with, for example,
-  `wopt=list(tolerance=.2)` allows misalignment of .2 times the
-  resolution of the first input raster and effectively use nearest
-  neighbor resampling. Algo 3 creates a virtual raster (see
+  Algo 1 will resample input rasters as needed (and that may slow it
+  down), but algo 2 does not do that. However, with algo 2 you can
+  increase the tolerance option to effectively get nearest neighbor
+  resampling with, for example, `wopt=list(tolerance=.2)` allows
+  misalignment of .2 times the resolution of the first input raster and
+  effectively use nearest neighbor resampling. Algo 3 creates a virtual
+  raster (see
   [`vrt`](https://rspatial.github.io/terra/reference/vrt.md)). This is
   very quick and can be a good approach if the merge raster is used as
   input to a next step in the analysis. It allows any amount of
@@ -106,7 +107,8 @@ Combining tiles with
 [`vrt`](https://rspatial.github.io/terra/reference/vrt.md) may be more
 efficient than using `merge`. See
 [`mosaic`](https://rspatial.github.io/terra/reference/mosaic.md) for
-averaging overlapping regions.
+averaging overlapping regions, and `blend` to create smooth transitions
+in overlapping zones.
 
 See [`classify`](https://rspatial.github.io/terra/reference/classify.md)
 to merge a `SpatRaster` and a `data.frame` and
@@ -141,16 +143,17 @@ dfr <- data.frame(District=p$NAME_1, Canton=p$NAME_2, Value=round(runif(length(p
 dfr <- dfr[1:5, ]
 pm <- merge(p, dfr, all.x=TRUE, by.x=c('NAME_1', 'NAME_2'), by.y=c('District', 'Canton'))
 pm
-#>  class       : SpatVector 
-#>  geometry    : polygons 
-#>  dimensions  : 12, 7  (geometries, attributes)
-#>  extent      : 5.74414, 6.528252, 49.44781, 50.18162  (xmin, xmax, ymin, ymax)
-#>  coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-#>  names       :   NAME_1   NAME_2  ID_1  ID_2  AREA       POP Value
-#>  type        :    <chr>    <chr> <num> <num> <num>     <num> <num>
-#>  values      : Diekirch Clervaux     1     1   312 1.808e+04   433
-#>                Diekirch Diekirch     1     2   218 3.254e+04   961
-#>                Diekirch  Redange     1     3   259 1.866e+04   922
+#> class       : SpatVector
+#> geometry    : polygons
+#> dimensions  : 12, 7  (geometries, attributes)
+#> extent      : 5.74414, 6.528252, 49.44781, 50.18162  (xmin, xmax, ymin, ymax)
+#> coord. ref. : lon/lat WGS 84 (EPSG:4326)
+#> names       :   NAME_1   NAME_2  ID_1  ID_2  AREA   POP Value
+#> type        :    <chr>    <chr> <num> <num> <num> <num> <num>
+#> values      : Diekirch Clervaux     1     1   312 18081   433
+#>               Diekirch Diekirch     1     2   218 32543   961
+#>               Diekirch  Redange     1     3   259 18664   922
+#>               ...
 values(pm)
 #>          NAME_1           NAME_2 ID_1 ID_2 AREA    POP Value
 #> 1      Diekirch         Clervaux    1    1  312  18081   433

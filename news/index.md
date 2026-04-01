@@ -1,10 +1,66 @@
 # Changelog
 
-## version 1.9-0
+## version 1.9-13
 
 ### bug fixes
 
-- `patches` newly implementated by Andrew Gene Brown
+### enhancements
+
+- `compareGeom` gets argument “tolerance” to overwrite the default that
+  can be set with `terraOptions`.
+  [\#2056](https://github.com/rspatial/terra/issues/2056) by R. Kyle
+  Bocinsky
+- `vect<data.frame>` now warns when it guesses the geom variables and/or
+  the lon/lat CRS
+  [\#1985](https://github.com/rspatial/terra/issues/1985) by Márcia
+  Barbosa
+- consistent warnings about missing CRS in distance functions.
+  [\#1924](https://github.com/rspatial/terra/issues/1924) by Márcia
+  Barbosa
+- `aggregate<SpatRaster>` no longer loose time attributes
+  [\#2066](https://github.com/rspatial/terra/issues/2066) by Wencheng
+  Lau-Medrano
+- the number of files that the OS allows to be simultanously sets a
+  limit for processing SpatRasters that is now detected
+  [\#1993](https://github.com/rspatial/terra/issues/1993) by Enrico
+  Mattea
+
+## version 1.9-11
+
+CRAN release: 2026-03-26
+
+Released 2026-03-26
+
+### bug fixes
+
+- `subst` and some cases of `classify`, did not recycle properly
+  [\#2046](https://github.com/rspatial/terra/issues/2046) by Nuno
+  Teixeira and [\#2052](https://github.com/rspatial/terra/issues/2052)
+  by Jérôme Guélat
+- better reading of gpkg files with unclear geometry and NULL geoms
+  [\#2051](https://github.com/rspatial/terra/issues/2051) by Duy Nguyen
+- `ifel` ignored NA values in some circumstances [SO
+  79905693](https://stackoverflow.com/questions/79905693) by Sean
+  McKenzie
+- `spatSample` failed if checkerboard sampling if a stratum was empty
+  [\#2060](https://github.com/rspatial/terra/issues/2060) by Tyler Smith
+
+### enhancements
+
+- `plot<SpatVector>` has new argument “fill_range”
+- `extract` gains argument “wide=FALSE” that can be used when
+  fun=“table” [2053](https://github.com/rspatial/terra/issues/2053) by
+  Jérôme Guélat
+
+## version 1.9-1
+
+CRAN release: 2026-03-08
+
+Released 2026-03-07
+
+### bug fixes
+
+- `patches` newly implemented by Andrew Gene Brown
   [\#2006](https://github.com/rspatial/terra/pull/2006) fixing
   [\#1758](https://github.com/rspatial/terra/issues/1758)
 - `project` did not apply the scale/offset values
@@ -52,7 +108,7 @@
 - `as.lines<matrix>` gains argument “segments”
   [\#2008](https://github.com/rspatial/terra/issues/2008) by Márcia
   Barbosa
-- `freq<SpatRaster>` with argument zones is a SpatRaster now returns the
+- `freq<SpatRaster>` with argument zones as a SpatRaster now returns the
   zone values instead of the index
   [\#2033](https://github.com/rspatial/terra/issues/2033) by Thomas
   Estabrook
@@ -91,7 +147,7 @@ Released 2026-01-12
   [\#1992](https://github.com/rspatial/terra/issues/1992) by Wencheng
   Lau-Medrano
 - `polys` ignored argument “border”
-  [\#1997](https://github.com/rspatial/terra/issues/1989) by Márcia
+  [\#1997](https://github.com/rspatial/terra/issues/1997) by Márcia
   Barbosa
 - `describe` works with linux paths starting with a tilde
   [\#2003](https://github.com/rspatial/terra/issues/2003) by David Moles
@@ -103,7 +159,7 @@ Released 2026-01-12
 
 - `vect<data.frame>` has improved guessing of variable names (if
   argument geom is not supplied) and crs (if that argument is not
-  supplied, and gets argument “quiet=TRUE” that can be set to false to
+  supplied), and gets argument “quiet=TRUE” that can be set to false to
   get warnings if either of these is guessed.
   [\#1984](https://github.com/rspatial/terra/issues/1984) and
   [\#1985](https://github.com/rspatial/terra/issues/1985) by Márcia

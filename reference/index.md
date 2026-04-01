@@ -88,6 +88,7 @@
 
 - [`animate(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/animate.md)
   [`animate(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/animate.md)
+  [`animate(`*`<SpatVectorCollection>`*`)`](https://rspatial.github.io/terra/reference/animate.md)
   : Animate a map
 
 - [`app(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/app.md)
@@ -167,6 +168,10 @@
   [`bestMatch(`*`<SpatRaster>`*`,`*`<data.frame>`*`)`](https://rspatial.github.io/terra/reference/bestMatch.md)
   [`bestMatch(`*`<SpatRaster>`*`,`*`<matrix>`*`)`](https://rspatial.github.io/terra/reference/bestMatch.md)
   : bestMatch
+
+- [`blend(`*`<SpatRaster>`*`,`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/blend.md)
+  [`blend(`*`<SpatRasterCollection>`*`,`*`<missing>`*`)`](https://rspatial.github.io/terra/reference/blend.md)
+  : Distance-weighted raster blending
 
 - [`boundaries(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/boundaries.md)
   : Detect boundaries (edges)

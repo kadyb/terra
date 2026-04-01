@@ -31,9 +31,9 @@ plot(x, y, ...)
 
 # S4 method for class 'SpatVector,character'
 plot(x, y, col=NULL, type=NULL, mar=NULL, legend=TRUE, axes=!add, plg=list(), pax=list(), 
-    main="", grid=FALSE, zebra=FALSE, ext=NULL, sort=TRUE, reverse=FALSE, fun=NULL,
-  colNA=NA, alpha=NULL, nr, nc, add=FALSE, buffer=TRUE, background=NULL, 
-  box=axes, clip=TRUE, ...)
+    main="", range=NULL, fill_range=FALSE, breaks=NULL, breakby="eqint", fun=NULL, 
+  colNA=NA, alpha=NULL, grid=FALSE, zebra=FALSE, ext=NULL, sort=TRUE, reverse=FALSE, 
+  nr, nc, add=FALSE, buffer=TRUE, background=NULL, box=axes, clip=TRUE, ...)
 
 # S4 method for class 'SpatVector,numeric'
 plot(x, y, ...)
@@ -414,16 +414,16 @@ par(oldpar)
 # multi-layer with RGB
 s <- rast(system.file("ex/logo.tif", package="terra"))   
 s
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 77, 101, 3  (nrow, ncol, nlyr)
 #> resolution  : 1, 1  (x, y)
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
-#> coord. ref. : Cartesian (Meter) 
-#> source      : logo.tif 
-#> colors RGB  : 1, 2, 3 
-#> names       : red, green, blue 
-#> min values  :   0,     0,    0 
-#> max values  : 255,   255,  255 
+#> coord. ref. : Cartesian (Meter)
+#> source      : logo.tif
+#> colors rgb  : 0, 1, 2
+#> names       : red, green, blue
+#> min values  :   0,     0,    0
+#> max values  : 255,   255,  255
 plot(s)
 # remove RGB
 plot(s*1)
