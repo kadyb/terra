@@ -35,7 +35,7 @@ as.list(x, ...)
   either "WKT" or "HEX", to get the geometry included in Well-Known-Text
   or hexadecimal notation. If `x` has point geometry, it can also bey
   "XY" to add the coordinates of each point. If `x` is a SpatRaster, any
-  value that is not NULL will return a list with the the parameters
+  value that is not NULL will return a list with the parameters
   describing the geometry of the SpatRaster are returned
 
 - ...:
