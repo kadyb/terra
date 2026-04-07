@@ -169,10 +169,6 @@
   [`bestMatch(`*`<SpatRaster>`*`,`*`<matrix>`*`)`](https://rspatial.github.io/terra/reference/bestMatch.md)
   : bestMatch
 
-- [`blend(`*`<SpatRaster>`*`,`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/blend.md)
-  [`blend(`*`<SpatRasterCollection>`*`,`*`<missing>`*`)`](https://rspatial.github.io/terra/reference/blend.md)
-  : Distance-weighted raster blending
-
 - [`boundaries(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/boundaries.md)
   : Detect boundaries (edges)
 
@@ -1063,6 +1059,10 @@
 - [`text(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/text.md)
   [`text(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/text.md)
   : Add labels to a map
+
+- [`thin(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/thin.md)
+  [`thinNodes(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/thin.md)
+  : Subset geometries by minimum distance
 
 - [`thresh(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/thresh.md)
   : Thresholding

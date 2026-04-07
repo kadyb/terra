@@ -74,8 +74,8 @@ time(s)
 # with time zone
 time(s) <- as.POSIXlt(Sys.time(), "America/New_York") + 0:2
 time(s)
-#> [1] "2026-04-01 08:09:15 EDT" "2026-04-01 08:09:16 EDT"
-#> [3] "2026-04-01 08:09:17 EDT"
+#> [1] "2026-04-07 12:37:14 EDT" "2026-04-07 12:37:15 EDT"
+#> [3] "2026-04-07 12:37:16 EDT"
 timeInfo(s)
 #>   time    step             zone
 #> 1 TRUE seconds America/New_York
@@ -89,7 +89,7 @@ s
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
 #> coord. ref. : Cartesian (Meter)
 #> source      : logo.tif
-#> colors rgb  : 0, 1, 2
+#> colors rgb  : 1, 2, 3
 #> names       : red, green, blue
 #> min values  :   0,     0,    0
 #> max values  : 255,   255,  255
@@ -103,7 +103,7 @@ s
 #> extent      : 0, 101, 0, 77  (xmin, xmax, ymin, ymax)
 #> coord. ref. : Cartesian (Meter)
 #> source      : logo.tif
-#> colors rgb  : 0, 1, 2
+#> colors rgb  : 1, 2, 3
 #> names       : red, green, blue
 #> min values  :   0,     0,    0
 #> max values  : 255,   255,  255

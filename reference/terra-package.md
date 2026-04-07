@@ -374,24 +374,23 @@ of a SpatRaster.
 
 ## XV. Miscellaneous SpatRaster methods
 
-|                                                                              |                                                                                          |
-|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| [`terraOptions`](https://rspatial.github.io/terra/reference/terraOptions.md) | Show, set, or get session options, mostly to control memory use and to set write options |
-| [`sources`](https://rspatial.github.io/terra/reference/sources.md)           | Show the data sources of a SpatRaster                                                    |
-| [`tmpFiles`](https://rspatial.github.io/terra/reference/tmpFile.md)          | Show or remove temporary files                                                           |
-| [`mem_info`](https://rspatial.github.io/terra/reference/mem.md)              | memory needs and availability                                                            |
-| [`inMemory`](https://rspatial.github.io/terra/reference/sources.md)          | Are the cell values in memory?                                                           |
-| [`deepcopy`](https://rspatial.github.io/terra/reference/deepcopy.md)         | Deep copy of SpatRaster                                                                  |
-| [`describe`](https://rspatial.github.io/terra/reference/describe.md)         | Summarize raster file sources                                                            |
-| [`same.crs`](https://rspatial.github.io/terra/reference/same.crs.md)         | Compare two CRS strings                                                                  |
-| [`ar_info`](https://rspatial.github.io/terra/reference/ar_info.md)           | Inspect NetCDF-like multi-array files                                                    |
-| [`gdal`](https://rspatial.github.io/terra/reference/gdal.md)                 | set GDAL warning level                                                                   |
-| [`getGDALconfig`](https://rspatial.github.io/terra/reference/gdal.md)        | [`setGDALconfig`](https://rspatial.github.io/terra/reference/gdal.md)                    |
-| GDAL session utilities                                                       | [`meta`](https://rspatial.github.io/terra/reference/meta.md)                             |
-| Metadata from a SpatRaster                                                   | [`metags`](https://rspatial.github.io/terra/reference/metags.md) / `metags<-`            |
-| Arbitrary metadata tags                                                      | [`tighten`](https://rspatial.github.io/terra/reference/collapse.md)                      |
-| combine data sources into one                                                | —————————                                                                                |
-| ——————————————————————————————                                               |                                                                                          |
+|                                                                               |                                                                                          |
+|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| [`terraOptions`](https://rspatial.github.io/terra/reference/terraOptions.md)  | Show, set, or get session options, mostly to control memory use and to set write options |
+| [`sources`](https://rspatial.github.io/terra/reference/sources.md)            | Show the data sources of a SpatRaster                                                    |
+| [`tmpFiles`](https://rspatial.github.io/terra/reference/tmpFile.md)           | Show or remove temporary files                                                           |
+| [`mem_info`](https://rspatial.github.io/terra/reference/mem.md)               | memory needs and availability                                                            |
+| [`inMemory`](https://rspatial.github.io/terra/reference/sources.md)           | Are the cell values in memory?                                                           |
+| [`deepcopy`](https://rspatial.github.io/terra/reference/deepcopy.md)          | Deep copy of SpatRaster                                                                  |
+| [`describe`](https://rspatial.github.io/terra/reference/describe.md)          | Summarize raster file sources                                                            |
+| [`same.crs`](https://rspatial.github.io/terra/reference/same.crs.md)          | Compare two CRS strings                                                                  |
+| [`ar_info`](https://rspatial.github.io/terra/reference/ar_info.md)            | Inspect NetCDF-like multi-array files                                                    |
+| [`gdal`](https://rspatial.github.io/terra/reference/gdal.md)                  | set GDAL warning level                                                                   |
+| `set/`[`getGDALconfig`](https://rspatial.github.io/terra/reference/gdal.md)   | GDAL session utilities                                                                   |
+| [`meta`](https://rspatial.github.io/terra/reference/meta.md)                  | Metadata from a SpatRaster                                                               |
+| [`metags`](https://rspatial.github.io/terra/reference/metags.md) / `metags<-` | Arbitrary metadata tags                                                                  |
+| [`tighten`](https://rspatial.github.io/terra/reference/collapse.md)           | combine data sources into one                                                            |
+| —————————                                                                     | ——————————————————————————————                                                           |
 
 ## XVI. SpatRasterDataset
 
@@ -443,6 +442,7 @@ not need to match each other.
 | [`hull`](https://rspatial.github.io/terra/reference/convhull.md)               | Compute a convex, circular, or rectangular hull around the (geometries of) a SpatVector |
 | [`fillHoles`](https://rspatial.github.io/terra/reference/fill.md)              | Remove or extract holes from polygons                                                   |
 | [`densify`](https://rspatial.github.io/terra/reference/densify.md)             | Add vertices along lines or polygons                                                    |
+| [`thinNodes`](https://rspatial.github.io/terra/reference/thin.md)              | Remove vertices along lines or polygons                                                 |
 | [`split`](https://rspatial.github.io/terra/reference/split.md)                 | Split a SpatVector based on values of an attribute                                      |
 | —————————                                                                      | ——————————————————————————————                                                          |
 
@@ -460,9 +460,9 @@ not need to match each other.
 | [`linearUnits`](https://rspatial.github.io/terra/reference/linearUnits.md)                                                                   | returns the linear units of the crs (in meter)                                       |
 | [`is.lonlat`](https://rspatial.github.io/terra/reference/is.lonlat.md)                                                                       | Test if an object has (or may have) a longitude/latitude coordinate reference system |
 | [`geomtype`](https://rspatial.github.io/terra/reference/geomtype.md)                                                                         | Geometry type string                                                                 |
-| [`is.lines`](https://rspatial.github.io/terra/reference/geomtype.md) / [`is.points`](https://rspatial.github.io/terra/reference/geomtype.md) | [`is.polygons`](https://rspatial.github.io/terra/reference/geomtype.md)              |
-| Geometry type tests                                                                                                                          | —————————                                                                            |
-| ——————————————————————————————                                                                                                               |                                                                                      |
+| [`is.lines`](https://rspatial.github.io/terra/reference/geomtype.md) / [`is.points`](https://rspatial.github.io/terra/reference/geomtype.md) | Geometry type tests                                                                  |
+| [`is.polygons`](https://rspatial.github.io/terra/reference/geomtype.md)                                                                      |                                                                                      |
+| —————————                                                                                                                                    | ——————————————————————————————                                                       |
 
 ## XX. Geometric queries
 
@@ -490,6 +490,7 @@ not need to match each other.
 | [`disagg`](https://rspatial.github.io/terra/reference/disaggregate.md)         | split multi-geometries into separate geometries              |
 | [`crop`](https://rspatial.github.io/terra/reference/crop.md)                   | clip geometries using a rectangle (SpatExtent) or SpatVector |
 | [`divide`](https://rspatial.github.io/terra/reference/divide.md)               | divide polygons into equal areas                             |
+| [`thin`](https://rspatial.github.io/terra/reference/thin.md)                   | remove geometries that are too close to another              |
 | —————————                                                                      | ——————————————————————————————                               |
 
 ## XXII. SpatVector attributes
