@@ -1,9 +1,12 @@
 # Changelog
 
-## version 1.9-17
+## version 1.9-23
 
 ### bug fixes
 
+- terra now distinguishes between the “standard”/“Gregorian” and the
+  “proleptic_gregorian” calendars
+  [\#1599](https://github.com/rspatial/terra/issues/1599) by Hu shiyu
 - `spatSample<SpatRaster>(method="stratified")` could cause an out of
   bounds error
   [\#1858](https://gi%5B#1848%5Dthub.com/rspatial/terra/issues/1858) by
@@ -27,9 +30,21 @@
   [\#1434](https://github.com/rspatial/terra/issues/1434) by Insang Song
   and [\#918](https://github.com/rspatial/terra/issues/918) by Agustin
   Lobo
+- `zonal` truncated weights
+  [\#2072](https://github.com/rspatial/terra/issues/2072) by Dominic
+  Royé
+- `distance<SpatRaster>` with haversine method could overflow from N to
+  S pole [\#2077](https://github.com/rspatial/terra/issues/2077) by
+  brshipley
 
 ### enhancements
 
+- `memmax` now defaults to 16 GB to prevent allocation failures on very
+  large memory systems
+  [\#2073](https://github.com/rspatial/terra/issues/2073) by Will
+  Kessler
+- `update` can (again) edit layernames in existing files
+  [\#2071](https://github.com/rspatial/terra/issues/2071) by Jim Shady
 - `compareGeom` gets argument “tolerance” to overwrite the default that
   can be set with `terraOptions`.
   [\#2056](https://github.com/rspatial/terra/issues/2056) by R. Kyle
@@ -48,6 +63,56 @@
   a limit for processing SpatRasters that is now detected
   [\#1993](https://github.com/rspatial/terra/issues/1993) by Enrico
   Mattea
+- additional effor to read KML/Z attribute values
+  [\#1954](https://github.com/rspatial/terra/issues/1954) by Yong-hun
+  Suh
+- `autocor` gets a “standardize” argument for row-standardization
+  [\#1593](https://github.com/rspatial/terra/issues/1593) by Nicholas
+  Berryman
+- `plet` gains argument “hover”
+  [\#1571](https://github.com/rspatial/terra/issues/1571) by Agustin
+  Lobo
+- `sbar` gets argument “bg” to set a background color
+  [\#1957](https://github.com/rspatial/terra/issues/1957) by Lucas
+  Salinas Morales
+- better support for writing vsizip files
+  [\#1629](https://github.com/rspatial/terra/issues/1629) by Eric R.
+  Scott
+- better error message if `project` fails because a tranformation grid
+  cannot be downloaded
+  [\#1425](https://github.com/rspatial/terra/issues/1425) by Kevin J
+  Wolz
+- PROJ CDN warnings (e.g. SSL errors when downloading datum grids) are
+  now collapsed into a single summary warning with guidance to use
+  `projNetwork(FALSE)`
+  [\#1351](https://github.com/rspatial/terra/issues/1351) by Hassan
+  Masoomi
+
+### new
+
+- `costDistance` and `gridDistance` can now return the nearest target
+  cell number [\#2034](https://github.com/rspatial/terra/issues/2034) by
+  chrislittleboy
+- `update` can write cell values to existing files
+  [\#1079](https://github.com/rspatial/terra/issues/1079) by Mike Koontz
+- `mosaic(fun="blend")` method to combine rasters with smooth gradients
+  in overlapping zones
+  [\#2011](https://github.com/rspatial/terra/issues/2011) by Greg
+  Schmidt
+- `animate<SpatVectorCollection>` method.
+  [\#2065](https://github.com/rspatial/terra/pull/2065) by Márcia
+  Barbosa
+- `thin<SpatVector>` method.
+  [\#1738](https://github.com/rspatial/terra/issues/1738) by Andrés
+- `legend_cont` method to draw a continuous legend independent of `plot`
+  [\#2057](https://github.com/rspatial/terra/issues/2057) by Lucas
+  Salinas Morales
+- `proj_pipelines` function to retrieve crs tranformation pipelines that
+  can be used in `project`
+  [\#1350](https://github.com/rspatial/terra/issues/1350) by Richard A.
+  Johansen
+- `tessallate` method to create hexagonal and rectangular tessallations
+- `tile_apply` for parallelization
 
 ## version 1.9-11
 
@@ -547,7 +612,7 @@ Released 2025-05-09
   Friend
 - `extract<SpatRaster>` with argument “layers” and xy=TRUE added an
   unexpected additional column
-  [\#1818](https://github.com/rspatial/terra/issues/1818) by Breeze-Hu
+  [\#1818](https://github.com/rspatial/terra/issues/1818) by Hu shiyu
 - `extractRange` now honors arguments `bind` and assigns `ID` within a
   list [\#1816](https://github.com/rspatial/terra/issues/1816) by
   WillhKessler

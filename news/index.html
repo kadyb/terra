@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9-17</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9-23</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,10 +34,11 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.9-17" id="version-19-17">version 1.9-17<a class="anchor" aria-label="anchor" href="#version-19-17"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.9-23" id="version-19-23">version 1.9-23<a class="anchor" aria-label="anchor" href="#version-19-23"></a></h2>
 <div class="section level3">
-<h3 id="bug-fixes-1-9-17">bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-9-17"></a></h3>
-<ul><li>
+<h3 id="bug-fixes-1-9-23">bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-9-23"></a></h3>
+<ul><li>terra now distinguishes between the “standard”/“Gregorian” and the “proleptic_gregorian” calendars <a href="https://github.com/rspatial/terra/issues/1599" class="external-link">#1599</a> by Hu shiyu</li>
+<li>
 <code>spatSample&lt;SpatRaster&gt;(method="stratified")</code> could cause an out of bounds error <a href="https://gi%5B#1848%5Dthub.com/rspatial/terra/issues/1858" class="external-link">#1858</a> by Felipe)</li>
 <li>
 <code>vrt</code> on OSX had trouble with options <a href="https://github.com/rspatial/terra/issues/1410" class="external-link">#1410</a> by Andrea Manica. And occaisionaly on Windows <a href="https://github.com/rspatial/terra/issues/1848" class="external-link">#1848</a> by Monika Anna Tomaszewska; due to passing them as a dangling pointer.</li>
@@ -48,10 +49,18 @@
 <li>
 <code>writeVector</code> can now write GPX format <a href="https://github.com/rspatial/terra/issues/1231" class="external-link">#1231</a> by Krzysztof Dyba</li>
 <li>better handling of rotated rasters <a href="https://github.com/rspatial/terra/issues/1434" class="external-link">#1434</a> by Insang Song and <a href="https://github.com/rspatial/terra/issues/918" class="external-link">#918</a> by Agustin Lobo</li>
+<li>
+<code>zonal</code> truncated weights <a href="https://github.com/rspatial/terra/issues/2072" class="external-link">#2072</a> by Dominic Royé</li>
+<li>
+<code>distance&lt;SpatRaster&gt;</code> with haversine method could overflow from N to S pole <a href="https://github.com/rspatial/terra/issues/2077" class="external-link">#2077</a> by brshipley</li>
 </ul></div>
 <div class="section level3">
-<h3 id="enhancements-1-9-17">enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-9-17"></a></h3>
+<h3 id="enhancements-1-9-23">enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-9-23"></a></h3>
 <ul><li>
+<code>memmax</code> now defaults to 16 GB to prevent allocation failures on very large memory systems <a href="https://github.com/rspatial/terra/issues/2073" class="external-link">#2073</a> by Will Kessler</li>
+<li>
+<code>update</code> can (again) edit layernames in existing files <a href="https://github.com/rspatial/terra/issues/2071" class="external-link">#2071</a> by Jim Shady</li>
+<li>
 <code>compareGeom</code> gets argument “tolerance” to overwrite the default that can be set with <code>terraOptions</code>. <a href="https://github.com/rspatial/terra/issues/2056" class="external-link">#2056</a> by R. Kyle Bocinsky</li>
 <li>
 <code>vect&lt;data.frame&gt;</code> now warns when it guesses the geom variables and/or the lon/lat CRS <a href="https://github.com/rspatial/terra/issues/1985" class="external-link">#1985</a> by Márcia Barbosa</li>
@@ -59,6 +68,37 @@
 <li>
 <code>aggregate&lt;SpatRaster&gt;</code> no longer loses time attributes <a href="https://github.com/rspatial/terra/issues/2066" class="external-link">#2066</a> by Wencheng Lau-Medrano</li>
 <li>the number of files that the OS allows to be simultaneously open sets a limit for processing SpatRasters that is now detected <a href="https://github.com/rspatial/terra/issues/1993" class="external-link">#1993</a> by Enrico Mattea</li>
+<li>additional effor to read KML/Z attribute values <a href="https://github.com/rspatial/terra/issues/1954" class="external-link">#1954</a> by Yong-hun Suh</li>
+<li>
+<code>autocor</code> gets a “standardize” argument for row-standardization <a href="https://github.com/rspatial/terra/issues/1593" class="external-link">#1593</a> by Nicholas Berryman</li>
+<li>
+<code>plet</code> gains argument “hover” <a href="https://github.com/rspatial/terra/issues/1571" class="external-link">#1571</a> by Agustin Lobo</li>
+<li>
+<code>sbar</code> gets argument “bg” to set a background color <a href="https://github.com/rspatial/terra/issues/1957" class="external-link">#1957</a> by Lucas Salinas Morales</li>
+<li>better support for writing vsizip files <a href="https://github.com/rspatial/terra/issues/1629" class="external-link">#1629</a> by Eric R. Scott</li>
+<li>better error message if <code>project</code> fails because a tranformation grid cannot be downloaded <a href="https://github.com/rspatial/terra/issues/1425" class="external-link">#1425</a> by Kevin J Wolz</li>
+<li>PROJ CDN warnings (e.g. SSL errors when downloading datum grids) are now collapsed into a single summary warning with guidance to use <code>projNetwork(FALSE)</code> <a href="https://github.com/rspatial/terra/issues/1351" class="external-link">#1351</a> by Hassan Masoomi</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-1-9-23">new<a class="anchor" aria-label="anchor" href="#new-1-9-23"></a></h3>
+<ul><li>
+<code>costDistance</code> and <code>gridDistance</code> can now return the nearest target cell number <a href="https://github.com/rspatial/terra/issues/2034" class="external-link">#2034</a> by chrislittleboy</li>
+<li>
+<code>update</code> can write cell values to existing files <a href="https://github.com/rspatial/terra/issues/1079" class="external-link">#1079</a> by Mike Koontz</li>
+<li>
+<code>mosaic(fun="blend")</code> method to combine rasters with smooth gradients in overlapping zones <a href="https://github.com/rspatial/terra/issues/2011" class="external-link">#2011</a> by Greg Schmidt</li>
+<li>
+<code>animate&lt;SpatVectorCollection&gt;</code> method. <a href="https://github.com/rspatial/terra/pull/2065" class="external-link">#2065</a> by Márcia Barbosa</li>
+<li>
+<code>thin&lt;SpatVector&gt;</code> method. <a href="https://github.com/rspatial/terra/issues/1738" class="external-link">#1738</a> by Andrés</li>
+<li>
+<code>legend_cont</code> method to draw a continuous legend independent of <code>plot</code> <a href="https://github.com/rspatial/terra/issues/2057" class="external-link">#2057</a> by Lucas Salinas Morales</li>
+<li>
+<code>proj_pipelines</code> function to retrieve crs tranformation pipelines that can be used in <code>project</code> <a href="https://github.com/rspatial/terra/issues/1350" class="external-link">#1350</a> by Richard A. Johansen</li>
+<li>
+<code>tessallate</code> method to create hexagonal and rectangular tessallations</li>
+<li>
+<code>tile_apply</code> for parallelization</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -393,7 +433,7 @@
 <li>
 <code>extract&lt;SpatRaster&gt;</code> with a “window” set, did not work properly <a href="https://github.com/rspatial/terra/issues/1819" class="external-link">#1819</a> by Derek Friend</li>
 <li>
-<code>extract&lt;SpatRaster&gt;</code> with argument “layers” and xy=TRUE added an unexpected additional column <a href="https://github.com/rspatial/terra/issues/1818" class="external-link">#1818</a> by Breeze-Hu</li>
+<code>extract&lt;SpatRaster&gt;</code> with argument “layers” and xy=TRUE added an unexpected additional column <a href="https://github.com/rspatial/terra/issues/1818" class="external-link">#1818</a> by Hu shiyu</li>
 <li>
 <code>extractRange</code> now honors arguments <code>bind</code> and assigns <code>ID</code> within a list <a href="https://github.com/rspatial/terra/issues/1816" class="external-link">#1816</a> by WillhKessler</li>
 <li>
