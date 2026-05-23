@@ -1607,7 +1607,7 @@
 <h2 class="pkg-version" data-toc-text="1.5-21" id="version-15-21">version 1.5-21<a class="anchor" aria-label="anchor" href="#version-15-21"></a></h2><p class="text-muted">CRAN release: 2022-02-16</p>
 <p>Released 2022-02-17</p>
 <ul><li>
-<code>writeVector</code> and <code>vect</code> now work with GPGK if the path has non-ascii characters [#518]</li>
+<code>writeVector</code> and <code>vect</code> now work with GPKG if the path has non-ascii characters [#518]</li>
 <li>The results of <code>predict</code> with <code>cores &gt; 1</code> and more than one output variable were garbled</li>
 <li>
 <code>zonal</code> dropped category names when using an external (R) function [#527] by Jakub Nowosad</li>
@@ -1651,7 +1651,7 @@
 <ul><li>
 <code>distance</code>, <code>gridDistance</code>, <code>direction</code> and <code>patches</code> now process all layers of the input SpatRaster. [#503] by Chris Haak</li>
 <li>consistent copy-on-modify behavior in <code>()&lt;-</code> methods. in-place updating available with <code>set.</code> methods such as <code>set.names</code> and <code>set.values</code>. [#493] by Jean Romain and [#511] by Bryan Fuentes</li>
-<li>much faster writing of GPGK vector data by using a single transaction (following sf) [#460] by Krzysztof Dyba</li>
+<li>much faster writing of GPKG vector data by using a single transaction (following sf) [#460] by Krzysztof Dyba</li>
 <li>
 <code>aggregate&lt;SpatRaster&gt;</code> now accepts functions that return more than one value per aggregated cell</li>
 <li>
@@ -1745,7 +1745,7 @@
 <code>inset</code> argument <code>border</code> changed to <code>perimeter</code> to allow passing <code>border</code> on to <code>plot&lt;Spat*&gt;</code>. [#456] by Márcia Barbosa</li>
 <li>The compile-time and run-time versions of GEOS are now compared and a warning is given if they are not the same. [#459] by Edzer Pebesma</li>
 <li>it is now possible to add sub-datasets to GPKG and GTiff files. [#300] by gtitov</li>
-<li>general option <code>memfrac</code> can now be set to zero (in stead of not lower than 0.1). [#476] by Matt Strimas-Mackey</li>
+<li>general option <code>memfrac</code> can now be set to zero (instead of not lower than 0.1). [#476] by Matt Strimas-Mackey</li>
 <li>new argument <code>allowGaps</code> in <code>patches</code> to disallow gaps between patch IDs. See [#478] by Dunbar Carpenter.</li>
 </ul></div>
 <div class="section level3">

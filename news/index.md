@@ -2180,7 +2180,7 @@ CRAN release: 2022-02-16
 
 Released 2022-02-17
 
-- `writeVector` and `vect` now work with GPGK if the path has non-ascii
+- `writeVector` and `vect` now work with GPKG if the path has non-ascii
   characters \[#518\]
 - The results of `predict` with `cores > 1` and more than one output
   variable were garbled
@@ -2234,7 +2234,7 @@ Released 2022-01-30
 - consistent copy-on-modify behavior in `()<-` methods. in-place
   updating available with `set.` methods such as `set.names` and
   `set.values`. \[#493\] by Jean Romain and \[#511\] by Bryan Fuentes
-- much faster writing of GPGK vector data by using a single transaction
+- much faster writing of GPKG vector data by using a single transaction
   (following sf) \[#460\] by Krzysztof Dyba
 - `aggregate<SpatRaster>` now accepts functions that return more than
   one value per aggregated cell
@@ -2347,7 +2347,7 @@ Released 2022-01-13
   warning is given if they are not the same. \[#459\] by Edzer Pebesma
 - it is now possible to add sub-datasets to GPKG and GTiff files.
   \[#300\] by gtitov
-- general option `memfrac` can now be set to zero (in stead of not lower
+- general option `memfrac` can now be set to zero (instead of not lower
   than 0.1). \[#476\] by Matt Strimas-Mackey
 - new argument `allowGaps` in `patches` to disallow gaps between patch
   IDs. See \[#478\] by Dunbar Carpenter.
