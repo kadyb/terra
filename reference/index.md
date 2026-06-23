@@ -707,6 +707,19 @@
   [`nearest(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/nearby.md)
   : nearby geometries
 
+- [`netw(`*`<missing>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`netw(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`netw(`*`<igraph>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`netw(`*`<character>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`netw(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_nodes(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_edges(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_nnodes(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_nedges(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_directed(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  [`net_weights(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/netw.md)
+  : Build a SpatNetwork
+
 - [`normalize.longitude(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/normalize.longitude.md)
   : normalize vector data that crosses the dateline
 
@@ -841,6 +854,7 @@
 
 - [`regress(`*`<SpatRaster>`*`,`*`<numeric>`*`)`](https://rspatial.github.io/terra/reference/regress.md)
   [`regress(`*`<SpatRaster>`*`,`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/regress.md)
+  [`regress(`*`<SpatRaster>`*`,`*`<data.frame>`*`)`](https://rspatial.github.io/terra/reference/regress.md)
   : Cell level regression
 
 - [`relate(`*`<SpatVector>`*`,`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/relate.md)
@@ -962,6 +976,9 @@
   [`shift(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/shift.md)
   [`shift(`*`<SpatExtent>`*`)`](https://rspatial.github.io/terra/reference/shift.md)
   : Shift
+
+- [`shortestPath(`*`<SpatNetwork>`*`)`](https://rspatial.github.io/terra/reference/shortestPath.md)
+  : Shortest paths on a SpatNetwork
 
 - [`sieve(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/sieve.md)
   : Sieve filter
@@ -1205,6 +1222,9 @@
 - [`writeCDF(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/writeCDF.md)
   [`writeCDF(`*`<SpatRasterDataset>`*`)`](https://rspatial.github.io/terra/reference/writeCDF.md)
   : Write raster data to a NetCDF file
+
+- [`writeNetwork(`*`<SpatNetwork>`*`,`*`<character>`*`)`](https://rspatial.github.io/terra/reference/writeNetwork.md)
+  : Write a SpatNetwork to disk
 
 - [`writeRaster(`*`<SpatRaster>`*`,`*`<character>`*`)`](https://rspatial.github.io/terra/reference/writeRaster.md)
   : Write raster data to a file

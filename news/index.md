@@ -1,27 +1,85 @@
 # Changelog
 
-## version 1.9-30
+## version 1.9-36
+
+### bug fixes
+
+- multidim vrt can now be opened
+  [\#2107](https://github.com/rspatial/terra/issues/2107)
+
+### enhancements
+
+### new
+
+## version 1.9-34
+
+CRAN release: 2026-06-19
+
+Released 2026-06-20
 
 ### bug fixes
 
 - terra did not build with GDAL \< 3.4
   [\#2080](https://github.com/rspatial/terra/issues/2080) by Wolfgang
   Viechtbauer
-- `spatSample<SpatRaster>(method="random")` on large rasters had become
-  very slow [\#2086](https://github.com/rspatial/terra/issues/2086) by
-  Jason Flower
+- `spatSample<SpatRaster>(method="random")` on large lon/lat rasters had
+  become very slow
+  [\#2086](https://github.com/rspatial/terra/issues/2086) by Jason
+  Flower
+- recurring `Cannot take exclusive lock on cache.db` PROJ warnings
+  during `project` are now collapsed into a single, actionable message
+  [\#2088](https://github.com/rspatial/terra/issues/2088)
 - retro labels generated with `plot(x, pax=list(retro=TRUE))` were
-  incorrect in the W and S hemisphere
+  incorrect in the W and S hemispheres
   [\#2090](https://github.com/rspatial/terra/issues/2090) by Lucas
   Salinas Morales
+- `trim` failed with “invalid extent” if the trimmed bounding box was
+  within `padding` cells of the raster edge
+  [\#2092](https://github.com/rspatial/terra/issues/2092) by James
+  Howard
+- With the new default “md=TRUE”, `rast` reported a “file does not
+  exist” error with a GDAL DSN string (e.g. `NETCDF:".../file.nc":VAR`).
+  , `rast` now splits a `DRIVER:"path":VAR` DSN so the multidim API can
+  find the file. It reuses the classic 2D driver’s geotransform so the
+  extent is reported in CRS units instead of raw coordinate-variable
+  values [\#2093](https://github.com/rspatial/terra/issues/2093) by
+  Michael Sumner
+- `writeRaster(x, filename, filetype="COG")` segfaulted with GDAL 3.13.0
+  because the COG driver now has `Create()` that crashes with `RasterIO`
+  crashes; terra now always writes COGs via the original `CreateCopy()`
+  path [\#2095](https://github.com/rspatial/terra/issues/2095) by Andrew
+  Brown
 
 ### enhancements
+
+- `extract<SpatRaster,SpatVector>` with polygons had become *much*
+  slower [\#2100](https://github.com/rspatial/terra/issues/2100) by
+  Torsten Hauffe
+- `regress` gained a `<SpatRaster,data.frame>` method to specify levels
+  of factors
+- `extract(x, polygons, fun=...)` could fail with large
+  polygons/high-res rasters. For standard functions (`sum`, `sum2`,
+  `mean`, `min`, `max`, `prod`, `sd`, `std`, `isNA`, `notNA`) processing
+  is now by block and memory safe
+  [\#2097](https://github.com/rspatial/terra/issues/2097)
+- `sprc(<character>)` gained argument `group=TRUE` to combine rasters
+  with the same geometry; convenient for “one folder per tile, one file
+  per band” situations
+- automatic addition of required “/vsicurl/” and/or “/vsizip/” to remote
+  vector data sources
+  [\#2103](https://github.com/rspatial/terra/issues/2103) by Márcia
+  Barbosa
 
 ### new
 
 - `make.RGB` function
   [\#2085](https://github.com/rspatial/terra/issues/2085) by Jérôme
   Guélat
+- `netw` to create `SpatNetwork` objects. The network can be directed or
+  undirected and is by default weighted by edge length.
+- `SpatNetwork` methods: `shortestPath`, ,
+  ``` writeNetwork``net_nodes ```, `net_edges`, `net_nnodes`,
+  `net_nedges`, `net_directed`, `net_weights` and `net_weights<-`.
 
 ## version 1.9-27
 
