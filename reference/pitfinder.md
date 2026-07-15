@@ -1,6 +1,6 @@
 # Pit Finder in a Flow Dir SpatRaster for Watershed Extraction
 
-find pits (depressions with no outlet )
+Find pits (depressions with no outlet)
 
 ## Usage
 
@@ -37,7 +37,10 @@ Emanuele Cordano
 
 ## See also
 
-[`terrain`](https://rspatial.github.io/terra/reference/terrain.md),[`watershed`](https://rspatial.github.io/terra/reference/watershed.md),[`flowAccumulation`](https://rspatial.github.io/terra/reference/flowAccumulation.md),[`NIDP`](https://rspatial.github.io/terra/reference/NIDP.md)
+[`terrain`](https://rspatial.github.io/terra/reference/terrain.md),
+[`watershed`](https://rspatial.github.io/terra/reference/watershed.md),
+[`flowAccumulation`](https://rspatial.github.io/terra/reference/flowAccumulation.md),
+[`NIDP`](https://rspatial.github.io/terra/reference/NIDP.md)
 
 ## Examples
 

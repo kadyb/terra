@@ -13,7 +13,7 @@ NIDP(x, filename="",...)
 
 - x:
 
-  SpatRaster with flow-direction. see
+  SpatRaster with flow-direction. See
   [`terrain`](https://rspatial.github.io/terra/reference/terrain.md)
 
 - filename:
@@ -31,8 +31,8 @@ SpatRaster
 
 ## Details
 
-NDIP is computed first to compute flow-accumulation with the algorithm
-by Zhou at al, 2019.
+NIDP is computed first to compute flow-accumulation with the algorithm
+by Zhou et al., 2019.
 
 ## References
 
