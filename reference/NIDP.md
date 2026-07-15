@@ -1,26 +1,20 @@
-# Flow accumulation
+# Number of immediate adjacent cells flowing into each cell
 
-Computes flow accumulation or the total contributing area in terms of
-numbers of cells upstream of each cell.
+Compute the number of immediate adjacent cells flowing into each cell
 
 ## Usage
 
 ``` r
 # S4 method for class 'SpatRaster'
-flowAccumulation(x, weight=NULL, filename="", ...)
+NIDP(x, filename="",...)
 ```
 
 ## Arguments
 
 - x:
 
-  SpatRaster with flow direction, see
-  [`terrain`](https://rspatial.github.io/terra/reference/terrain.md).
-
-- weight:
-
-  SpatRaster with weight/score data. For example, cell area or
-  precipitation
+  SpatRaster with flow-direction. see
+  [`terrain`](https://rspatial.github.io/terra/reference/terrain.md)
 
 - filename:
 
@@ -37,27 +31,28 @@ SpatRaster
 
 ## Details
 
-The algorithm is an adaptation of the one proposed by Zhou at al, 2019.
-
-## See also
-
-[`terrain`](https://rspatial.github.io/terra/reference/terrain.md),[`watershed`](https://rspatial.github.io/terra/reference/watershed.md),
-[`NIDP`](https://rspatial.github.io/terra/reference/NIDP.md)
-
-## Author
-
-Emanuele Cordano
+NDIP is computed first to compute flow-accumulation with the algorithm
+by Zhou at al, 2019.
 
 ## References
 
 Zhou, G., Wei, H. & Fu, S. A fast and simple algorithm for calculating
 flow accumulation matrices from raster digital elevation. Front. Earth
-Sci. 13, 317–326 (2019). doi:10.1007/s11707-018-0725-9. Also see:
-<https://ica-abs.copernicus.org/articles/1/434/2019/>
+Sci. 13, 317–326 (2019). https://doi.org/10.1007/s11707-018-0725-9
+<https://link.springer.com/article/10.1007/s11707-018-0725-9>
+
+## See also
+
+[`flowAccumulation`](https://rspatial.github.io/terra/reference/flowAccumulation.md)
+
+## Author
+
+Emanuele Cordano
 
 ## Examples
 
 ``` r
+
 elev1 <- array(NA,c(9,9))
 elev2 <- elev1
 dx <- 1
@@ -68,12 +63,12 @@ for (r in 1:nrow(elev1)) {
     
     x <- (c-5)*dy
     elev1[r,c] <- 5*(x^2+y^2)
-    elev2[r,c] <- 10+5*(abs(x))-0.001*y 
+    elev2[r,c] <- 10+5*(abs(x))-0.001*y ### 5*(x^2+y^2)
   }
 } 
 
 
-## Elevation raster
+## Elevation Raster 
 elev1 <- rast(elev1)
 elev2 <- rast(elev2)
 
@@ -105,9 +100,10 @@ plot(elev1)
 plot(elev2)
 
 
-## Flow direction raster
+## Flow Direction Raster
 flowdir1<- terrain(elev1,v="flowdir")
 flowdir2<- terrain(elev2,v="flowdir")
+
 
 t(array(flowdir1[],rev(dim(flowdir1)[1:2])))
 #>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
@@ -138,49 +134,34 @@ plot(flowdir2)
 
 
 ## 
-flow_acc1 <- flowAccumulation((flowdir1))
-flow_acc2 <- flowAccumulation((flowdir2))
+nidp1 <- NIDP((flowdir1))
+nidp2 <- NIDP((flowdir2))
 
-weight <- elev1*0+10
-
-flow_acc1w <- flowAccumulation(flowdir1,weight)
-flow_acc2w <- flowAccumulation(flowdir2,weight)
-
-t(array(flow_acc1w[],rev(dim(flow_acc1w)[1:2])))
+t(array(nidp1[],rev(dim(nidp1)[1:2])))
 #>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-#>  [1,]   10   10   10   10   10   10   10   10   10
-#>  [2,]   10   20   20   30   20   30   20   20   10
-#>  [3,]   10   20   30   60   30   60   30   20   10
-#>  [4,]   10   30   60  160   40  160   60   30   10
-#>  [5,]   10   20   30   40  810   40   30   20   10
-#>  [6,]   10   30   60  160   40  160   60   30   10
-#>  [7,]   10   20   30   60   30   60   30   20   10
-#>  [8,]   10   20   20   30   20   30   20   20   10
-#>  [9,]   10   10   10   10   10   10   10   10   10
-t(array(flow_acc2w[],rev(dim(flow_acc2w)[1:2])))
+#>  [1,]    0    0    0    0    0    0    0    0    0
+#>  [2,]    0    1    1    2    1    2    1    1    0
+#>  [3,]    0    1    1    2    1    2    1    1    0
+#>  [4,]    0    2    2    3    1    3    2    2    0
+#>  [5,]    0    1    1    1    9    1    1    1    0
+#>  [6,]    0    2    2    3    1    3    2    2    0
+#>  [7,]    0    1    1    2    1    2    1    1    0
+#>  [8,]    0    1    1    2    1    2    1    1    0
+#>  [9,]    0    0    0    0    0    0    0    0    0
+t(array(nidp2[],rev(dim(nidp2)[1:2])))
 #>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
-#>  [1,]   10   20   30   40   90   40   30   20   10
-#>  [2,]   10   20   30   40  180   40   30   20   10
-#>  [3,]   10   20   30   40  270   40   30   20   10
-#>  [4,]   10   20   30   40  360   40   30   20   10
-#>  [5,]   10   20   30   40  450   40   30   20   10
-#>  [6,]   10   20   30   40  540   40   30   20   10
-#>  [7,]   10   20   30   40  630   40   30   20   10
-#>  [8,]   10   20   30   40  720   40   30   20   10
-#>  [9,]   10   20   30   40  810   40   30   20   10
+#>  [1,]    0    1    1    1    2    1    1    1    0
+#>  [2,]    0    1    1    1    3    1    1    1    0
+#>  [3,]    0    1    1    1    3    1    1    1    0
+#>  [4,]    0    1    1    1    3    1    1    1    0
+#>  [5,]    0    1    1    1    3    1    1    1    0
+#>  [6,]    0    1    1    1    3    1    1    1    0
+#>  [7,]    0    1    1    1    3    1    1    1    0
+#>  [8,]    0    1    1    1    3    1    1    1    0
+#>  [9,]    0    1    1    1    4    1    1    1    0
 
-plot(flow_acc1w)
+plot(nidp1)
 
-plot(flow_acc2w)
+plot(nidp2)
 
-
-
-## Application with example elevation data
-
-elev <- rast(system.file('ex/elev.tif',package="terra"))
-flowdir <- terrain(elev,"flowdir")
-
-weight <- cellSize(elev,unit="km")
-flowacc_weight <- flowAccumulation(flowdir,weight)
-flowacc  <- flowAccumulation(flowdir)
 ```

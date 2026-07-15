@@ -37,7 +37,7 @@ Emanuele Cordano
 
 ## See also
 
-[`terrain`](https://rspatial.github.io/terra/reference/terrain.md),[`watershed`](https://rspatial.github.io/terra/reference/watershed.md),[`flowAccumulation`](https://rspatial.github.io/terra/reference/flowAccumulation.md),[`NIDP`](https://rspatial.github.io/terra/reference/NIPD.md)
+[`terrain`](https://rspatial.github.io/terra/reference/terrain.md),[`watershed`](https://rspatial.github.io/terra/reference/watershed.md),[`flowAccumulation`](https://rspatial.github.io/terra/reference/flowAccumulation.md),[`NIDP`](https://rspatial.github.io/terra/reference/NIDP.md)
 
 ## Examples
 
