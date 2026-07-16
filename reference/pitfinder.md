@@ -6,15 +6,20 @@ Find pits (depressions with no outlet)
 
 ``` r
 # S4 method for class 'SpatRaster'
-pitfinder(x,filename="",...)
+pitfinder(x,pits_on_boundary=TRUE,filename="",...)
 ```
 
 ## Arguments
 
 - x:
 
-  SpatRaster with flow-direction. See
+  SpatRaster with flow-direcion. See
   [`terrain`](https://rspatial.github.io/terra/reference/terrain.md)
+
+- pits_on_boundary:
+
+  logical if `TRUE` (default) pits are considered also on the boundary.
+  If `FALSE` pits are considered only within the terrain domain.
 
 - filename:
 
@@ -33,7 +38,7 @@ A
 
 ## Author
 
-Emanuele Cordano
+Emanuele Cordano (implemantation of the source code)
 
 ## See also
 
@@ -190,7 +195,8 @@ elev <- rast(system.file('ex/elev.tif',package="terra"))
 flowdir <- terrain(elev,"flowdir")
 
 pits <- pitfinder(flowdir)
-
+pits2 <- pitfinder(flowdir,pits_on_boundary=FALSE)
+plot((pits>0)==(pits2>0))
 
 
 

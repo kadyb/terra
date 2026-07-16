@@ -82,7 +82,7 @@ rast(fname)
 #> resolution  : 1.019802, 1.025974  (x, y)
 #> extent      : -1, 102, -1, 78  (xmin, xmax, ymin, ymax)
 #> coord. ref. : WGS 84 / UTM zone 1N (EPSG:32601)
-#> source      : file220281e9dfb.tif
+#> source      : file22505715b5ff.tif
 #> names       :   A,   B,   C
 #> min values  :   0,   0,   0
 #> max values  : 255, 255, 255
