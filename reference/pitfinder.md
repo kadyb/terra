@@ -29,7 +29,7 @@ pitfinder(x,filename="",...)
 
 A
 [`SpatRaster-class`](https://rspatial.github.io/terra/reference/SpatRaster-class.md)
-(raster) map containing value 1 for the pits and value 0 elsewhere.
+(raster) map containing values \>1 for each pit and value 0 elsewhere.
 
 ## Author
 
