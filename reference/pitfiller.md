@@ -1,13 +1,13 @@
 # Pit Filler
 
-Fills pits (depressions with no outlet) in a digital elevation model
-(DEM) using the PEM4PIT terrain erosion model.
+Fills pits (depressions with no outlet) in a elevation raster using the
+PEM4PIT terrain erosion model.
 
 ## Usage
 
 ``` r
 # S4 method for class 'SpatRaster'
-pitfiller(x, pit = NULL, flowdir = NULL, niter = 10, lambda = 0,
+pitfiller(x, pit, flowdir, niter = 10, lambda = 0,
                  deviation_type = "lad", max_iters=10^6, U = 1, D = 300, beta = 0.9,
                  theta_exp = 0.5, filename = "", ...)
 ```
@@ -16,67 +16,66 @@ pitfiller(x, pit = NULL, flowdir = NULL, niter = 10, lambda = 0,
 
 - x:
 
-  SpatRaster with digital elevation model.
+  SpatRaster with elevation values
 
 - pit:
 
-  SpatRaster with pits. See
-  [`pitfinder`](https://rspatial.github.io/terra/reference/pitfinder.md).
+  SpatRaster with pits identified with values \> 0. See
+  [`pitfinder`](https://rspatial.github.io/terra/reference/pitfinder.md)
 
 - flowdir:
 
-  SpatRaster with flow direction or `NULL`. If `NULL`, it is calculated
-  internally. See `flowdirD8lad`.
+  SpatRaster with flow direction. See
+  [`flowDir`](https://rspatial.github.io/terra/reference/flowDir.md)
 
 - niter:
 
-  Number of iterations. Default is 10.
+  Number of iterations
 
 - lambda:
 
-  Deviation parameter. Default is 0.
+  Deviation parameter
 
 - deviation_type:
 
-  Type of deviation. Default is `"lad"`. See `flowdirD8lad`.
+  Type of deviation. See
+  [`flowDir`](https://rspatial.github.io/terra/reference/flowDir.md)
 
 - max_iters:
 
   maximum iterations for drainage path starting points detection.See
-  `flowdirD8lad`.
+  [`flowDir`](https://rspatial.github.io/terra/reference/flowDir.md)
 
 - U:
 
-  Uplift rate. See equation parameters \[Grimaldi at al, 2007\].
+  Uplift rate. See Details
 
 - D:
 
-  Diffusion coefficient. See equation parameters \[Grimaldi at al,
-  2007\].
+  Diffusion coefficient. See Details
 
 - beta:
 
-  Erosion coefficient. See equation parameters \[Grimaldi at al, 2007\].
+  Erosion coefficient. See Details
 
 - theta_exp:
 
-  Exponent for contributing area. See equation parameters \[Grimaldi at
-  al, 2007\].
+  Exponent for contributing area. See Details
 
 - filename:
 
-  Character. Output filename.
+  Character. Output filename
 
 - ...:
 
   Additional arguments for writing files, as in
-  [`writeRaster`](https://rspatial.github.io/terra/reference/writeRaster.md).
+  [`writeRaster`](https://rspatial.github.io/terra/reference/writeRaster.md)
 
 ## Value
 
 A
 [`SpatRaster`](https://rspatial.github.io/terra/reference/SpatRaster-class.md)
-object with pits filled.
+with pits filled.
 
 ## Details
 
@@ -148,49 +147,24 @@ Emanuele Cordano
 
 [`terrain`](https://rspatial.github.io/terra/reference/terrain.md),
 [`watershed`](https://rspatial.github.io/terra/reference/watershed.md),
-`flowdirD8lad`,
+[`flowDir`](https://rspatial.github.io/terra/reference/flowDir.md),
 [`pitfinder`](https://rspatial.github.io/terra/reference/pitfinder.md)
 
 ## Examples
 
 ``` r
-f <- system.file("ex/elev.tif", package = "terra")
-elev <- rast(f) |> project(y = "epsg:32632")
+elev <- rast(system.file("ex/elev.tif", package = "terra"))
+elev <- project(elev, "epsg:32632")
 
 lambda <- 0.5 ## try also 0 (default)
 flowdir <- flowDir(elev, lambda = lambda)
 pits <- pitfinder(flowdir, pits_on_boundary = FALSE)
 elev2 <- pitfiller(x = elev, pit = pits,lambda=lambda)
-#> class       : SpatRaster
-#> size        : 111, 78, 1  (nrow, ncol, nlyr)
-#> resolution  : 772.033, 772.033  (x, y)
-#> extent      : 263811.2, 324029.8, 5479328, 5565024  (xmin, xmax, ymin, ymax)
-#> coord. ref. : WGS 84 / UTM zone 32N (EPSG:32632)
-#> source(s)   : memory
-#> name        : flowdir_ltd_l=0.5
-#> min value   :                 0
-#> max value   :               112
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
-#> 
-#> Exceeding number of iterations in d8ltd/d8lad flow directions computation
+#> Error in (function (cond) .Internal(C_tryCatchHelper(addr, 1L, cond)))(structure(list(message = "argument \"flowdir\" is missing, with no default",     call = .local(x, pit, ...)), class = c("evalError", "missingArgError", "error", "condition"))): error in evaluating the argument 'x' in selecting a method for function 'mask': argument "flowdir" is missing, with no default
+
 flowdir2 <- terrain(elev2, "flowdir")
+#> Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'terrain': object 'elev2' not found
 flowdir2 <- flowDir(elev2, lambda = lambda)
+#> Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'flowDir': object 'elev2' not found
 pits2 <- pitfinder(flowdir, pits_on_boundary = FALSE)
 ```

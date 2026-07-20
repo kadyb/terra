@@ -120,8 +120,8 @@
   [`Arith,matrix,SpatRaster-method`](https://rspatial.github.io/terra/reference/arith-generic.md)
   : Arithmetic
 
-- [`arrows_on_rast()`](https://rspatial.github.io/terra/reference/arrows_on_rast.md)
-  : Visualize Directional Arrows on a SpatRaster
+- [`as.arrows()`](https://rspatial.github.io/terra/reference/as.arrows.md)
+  : Add directional arrows from a SpatRaster to a plot
 
 - [`as.character(`*`<SpatExtent>`*`)`](https://rspatial.github.io/terra/reference/as.character.md)
   [`as.character(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/as.character.md)
@@ -434,7 +434,7 @@
 - [`flowAccumulation(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/flowAccumulation.md)
   : Flow accumulation
 
-- [`flowDir(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/flowdirD8ltd.md)
+- [`flowDir(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/flowDir.md)
   : Path-Based Nondisperive Flow Direction
 
 - [`focal(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/focal.md)
@@ -764,7 +764,7 @@
   : Pit Filler
 
 - [`pitfinder(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/pitfinder.md)
-  : Pit Finder in a Flow Dir SpatRaster for Watershed Extraction
+  : Find pits (depressions with no outlet)
 
 - [`plet(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plet.md)
   [`plet(`*`<SpatRasterCollection>`*`)`](https://rspatial.github.io/terra/reference/plet.md)

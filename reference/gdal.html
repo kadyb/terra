@@ -17,7 +17,7 @@ projPaths gets or sets the search paths that PROJ uses to find coordinate system
 
     <a class="navbar-brand me-2" href="../index.html">terra</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9-39</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9-40</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +89,7 @@ projPaths gets or sets the search paths that PROJ uses to find coordinate system
 <dd><p>character. value for GDAL configuration option. Use "" to reset it to its default value</p></dd>
 
   <dt id="arg-lib">lib<a class="anchor" aria-label="anchor" href="#arg-lib"></a></dt>
-<dd><p>character. "gdal", "proj", or "geos", or any other value to get the versions numbers of all three</p></dd>
+<dd><p>character. "gdal", "proj", "geos", "TBB", or any other value to get the versions numbers of the first three and a logical value indicating whether TBB paralellization is available</p></dd>
 
   <dt id="arg-parse">parse<a class="anchor" aria-label="anchor" href="#arg-parse"></a></dt>
 <dd><p>logical. Should the version be parsed into three numerical values (major, minor and sub versions)?</p></dd>
@@ -116,7 +116,7 @@ projPaths gets or sets the search paths that PROJ uses to find coordinate system
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>character vector of search paths. When setting paths, the result is returned invisibly.</p>
+    <p>character vector in most cases.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
