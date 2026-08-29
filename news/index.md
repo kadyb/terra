@@ -1,6 +1,36 @@
 # Changelog
 
-## version 1.9-40
+## version 1.9-47
+
+### bug fixes
+
+- `union` could in some cases return an intersection instead
+  [\#2175](https://github.com/rspatial/terra/issues/2175) by Alex
+  Chubaty
+- terra did not compile with GDAL \< 3.4
+  [\#2174](https://github.com/rspatial/terra/issues/2174) by Wes
+  Cummings
+- terra did not compule with GEOS \< 3.10.0
+  [\#2172](https://github.com/rspatial/terra/issues/2172) by Shane
+  Sturrock
+- UBSAN error in flowDir (reported by CRAN)
+- `pitfiller` did not properly handle missing values
+  [\#2168](https://github.com/rspatial/terra/issues/2168) by Michael
+  Chirico
+
+### enhancements
+
+### new
+
+`gdal_has_pam` to allow skipping tests if GDAL PAM is not enabled
+[\#2170](https://github.com/rspatial/terra/issues/2170) by Michael
+Chirico
+
+## version 1.9-46
+
+CRAN release: 2026-08-22
+
+Released 2026-08-21
 
 ### bug fixes
 
@@ -30,12 +60,33 @@
 - output of `cartogram(x, type="nc")` was invisible
   [\#2134](https://github.com/rspatial/terra/issues/2134) by Márcia
   Barbosa
+- `rast(, md=TRUE)` did not read the coordinates for HDF4/MODIS files
+  [\#2148](https://github.com/rspatial/terra/issues/2148) by Kodi Arfer
+- `tile_apply` failed on SpatRasters with more than one source
+  [\#2150](https://github.com/rspatial/terra/issues/2150) by ebkurtz
+- `as.polygons` on a file-backed multi-layer SpatRaster always used the
+  first layer, not the selected layer
+  [\#2156](https://github.com/rspatial/terra/issues/2156) by Mehmet
+  Göktuğ Öztürk
+- improved multidim handling of GRIB files
+  [\#2160](https://github.com/rspatial/terra/issues/2160) by Kodi Arfer.
+- improved mutlidim handling of HDF-EOS files
+  [\#2163](https://github.com/rspatial/terra/issues/2163) by Monika Anna
+  Tomaszewska and Kodi Arfer
+  [\#2162](https://github.com/rspatial/terra/issues/2162)
+- `spatSample` did not handle a combination of raster sources if some
+  had a window and others not
+  [\#2164](https://github.com/rspatial/terra/issues/2164) by Krzysztof
+  Dyba
 
 ### enhancements
 
 - faster sampling of multidim rasters
   [\#2110](https://github.com/rspatial/terra/issues/2110) by Michael
   Sumner
+- `extract` was very slow for multidim (e.g. NetCDF) files with
+  compressed chunks
+  [\#2145](https://github.com/rspatial/terra/issues/2145) by Kodi Arfer
 - `centroids` gained argument “correct” that moves centroids that are
   not on their geometry to the nearest location on the geometry
   (`inside=FALSE`) or to an alternative location that is inside the
@@ -52,9 +103,20 @@
 - the “threads” option now defaults to 16 (instead of no limit) to avoid
   run-away thread counts on machines with very many cores. The “threads”
   argument of `project` and `resample` can now also be a number
+- argument `adj` in `add_mtext` now better aligns text along the margins
+  [\#2158](https://github.com/rspatial/terra/pull/2158) by Mehmet Göktuğ
+  Öztürk
+- `spatSample(method="startified")` now returns categorical values, not
+  their integer representation
+  [\#2159](https://github.com/rspatial/terra/issues/2159) by Krzysztof
+  Dyba
 
 ### new
 
+- `rast` better support for file that have geolocation/GCPs and new
+  functions `has.geoloc` and `geoloc`
+  [\#1175](https://github.com/rspatial/terra/issues/1175) by Michael
+  Sumner
 - `furdist` method to get the furthest distance from a point to any
   location on another geometry
 - `snapTo` method to move points to the nearest location on lines or

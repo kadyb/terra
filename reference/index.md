@@ -401,7 +401,7 @@
   [`extract(`*`<SpatRaster>`*`,`*`<matrix>`*`)`](https://rspatial.github.io/terra/reference/extract.md)
   [`extract(`*`<SpatRaster>`*`,`*`<numeric>`*`)`](https://rspatial.github.io/terra/reference/extract.md)
   [`extract(`*`<SpatVector>`*`,`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/extract.md)
-  : Extract values from a SpatRaster
+  : Extract values from a SpatRaster or polygon SpatVector
 
 - [`extractAlong()`](https://rspatial.github.io/terra/reference/extractAlong.md)
   : extract values along lines
@@ -474,6 +474,7 @@
   [`gdalCache()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`setGDALconfig()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`getGDALconfig()`](https://rspatial.github.io/terra/reference/gdal.md)
+  [`gdal_has_pam()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`clearVSIcache()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`libVersion()`](https://rspatial.github.io/terra/reference/gdal.md)
   [`unloadGDALdrivers()`](https://rspatial.github.io/terra/reference/gdal.md)
@@ -506,6 +507,13 @@
 
 - [`halo()`](https://rspatial.github.io/terra/reference/halo.md) : Add
   halo-ed text to a plot
+
+- [`has.geoloc(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/has.geoloc.md)
+  [`geoloc(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/has.geoloc.md)
+  : Geolocation arrays and GCPs
+
+- [`has.z(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/has.z.md)
+  : Does a SpatVector have Z coordinates?
 
 - [`head()`](https://rspatial.github.io/terra/reference/headtail.md)
   [`tail()`](https://rspatial.github.io/terra/reference/headtail.md) :
@@ -1145,7 +1153,7 @@
 - [`union(`*`<SpatVector>`*`,`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/union.md)
   [`union(`*`<SpatVector>`*`,`*`<missing>`*`)`](https://rspatial.github.io/terra/reference/union.md)
   [`union(`*`<SpatExtent>`*`,`*`<SpatExtent>`*`)`](https://rspatial.github.io/terra/reference/union.md)
-  : Union SpatVector or SpatExtent objects
+  : Geometric union SpatVector or SpatExtent objects
 
 - [`unique(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/unique.md)
   [`unique(`*`<SpatVector>`*`)`](https://rspatial.github.io/terra/reference/unique.md)
