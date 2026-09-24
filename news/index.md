@@ -1,30 +1,73 @@
 # Changelog
 
-## version 1.9-47
+## version 1.9-51
+
+### bug fixes
+
+### enhancements
+
+- GDAL raster block cache is set to 64 MB at load unless `GDAL_CACHEMAX`
+  is already set
+- raster processing chunks are aligned to the source file’s block height
+  when that is reported
+- `rasterize` of points now accepts `fun="modal"`
+
+### new
+
+## version 1.9-50
+
+CRAN release: 2026-09-08
+
+Released 2026-09-08
 
 ### bug fixes
 
 - `union` could in some cases return an intersection instead
   [\#2175](https://github.com/rspatial/terra/issues/2175) by Alex
   Chubaty
+- `erase` could return more attribute rows than geometries when a
+  polygon difference became a non-polygon (e.g. a line from a zero-area
+  ring) [\#2179](https://github.com/rspatial/terra/issues/2179) by Alex
+  Chubaty
 - terra did not compile with GDAL \< 3.4
   [\#2174](https://github.com/rspatial/terra/issues/2174) by Wes
   Cummings
-- terra did not compule with GEOS \< 3.10.0
+- terra did not compile with GEOS \< 3.10.0
   [\#2172](https://github.com/rspatial/terra/issues/2172) by Shane
   Sturrock
-- UBSAN error in flowDir (reported by CRAN)
+- integer overflow (UBSAN) error in internal use of flowDir (reported by
+  CRAN)
 - `pitfiller` did not properly handle missing values
   [\#2168](https://github.com/rspatial/terra/issues/2168) by Michael
   Chirico
+- GRIB files with 0 to 360 longitude are by default remapped to -180 to
+  180 by the classic GDAL GRIB driver. The multdimensional driver does
+  not do that. This created a mismatched longitude extent (taken from
+  the classic driver) when opening such a file with the multidim
+  interface [\#2178](https://github.com/rspatial/terra/issues/2178) by
+  Yadong Liu
+- `rast` with the default multidim probe discarded GDAL open error
+  messages [\#2185](https://github.com/rspatial/terra/issues/2185) by
+  Krzysztof Dyba
 
 ### enhancements
 
+- `project` gains arguments `warpOpts` (GDAL `-wo`, SpatRaster only) and
+  `transOpts` (transformer options for SpatRaster and SpatVector)
+  [\#2182](https://github.com/rspatial/terra/issues/2182) by Michael
+  Sumner.
+- `project` arguments `AOI`, `desired_accuracy`, and `allow_approx` were
+  removed in favor of `transOpts` (“AREA_OF_INTEREST=”,
+  “DESIRED_ACCURACY=”, “ALLOW_BALLPARK=”).
+- When projecting a SpatRaster to a SpatRaster template `y`, its lon/lat
+  extent is passed as `AREA_OF_INTEREST` unless this was set in
+  `transOpts`
+
 ### new
 
-`gdal_has_pam` to allow skipping tests if GDAL PAM is not enabled
-[\#2170](https://github.com/rspatial/terra/issues/2170) by Michael
-Chirico
+- `gdal_has_pam` to allow skipping tests if GDAL PAM is not enabled
+  [\#2170](https://github.com/rspatial/terra/issues/2170) by Michael
+  Chirico
 
 ## version 1.9-46
 
@@ -154,7 +197,7 @@ Released 2026-06-20
   Howard
 - With the new default “md=TRUE”, `rast` reported a “file does not
   exist” error with a GDAL DSN string (e.g. `NETCDF:".../file.nc":VAR`).
-  , `rast` now splits a `DRIVER:"path":VAR` DSN so the multidim API can
+  `rast` now splits a `DRIVER:"path":VAR` DSN so the multidim API can
   find the file. It reuses the classic 2D driver’s geotransform so the
   extent is reported in CRS units instead of raw coordinate-variable
   values [\#2093](https://github.com/rspatial/terra/issues/2093) by
