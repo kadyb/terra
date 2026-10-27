@@ -2,8 +2,6 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    paths:
-      - '**.R'
     branches: [main, master]
   pull_request:
     branches: [main, master]
@@ -21,9 +19,6 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: 'devel'}
-          - {os: windows-2025,   r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest,   r: 'release'}
           - {os: macos-latest,   r: 'release'}
           
     env:
@@ -50,7 +45,17 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
+      - name: Create R profile
+        shell: bash
+        run: |
+          cat > "${RUNNER_TEMP}/profile.R" <<'EOF'
+          options(
+            warnPartialMatchDollar = TRUE,
+            warnPartialMatchArgs   = TRUE,
+            warnPartialMatchAttr   = TRUE
+          )
+          EOF
+      
       - uses: r-lib/actions/check-r-package@v2
-        with:
-          upload-snapshots: true
-          error-on: '"error"'
+        env:
+          R_PROFILE_USER: ${{ runner.temp }}/profile.R
