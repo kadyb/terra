@@ -1,6 +1,6 @@
 # Changelog
 
-## version 1.9-54
+## version 1.9-58
 
 ### bug fixes
 
@@ -16,10 +16,22 @@
   Breeze-Hu
 - `predict` failed on a one-column raster with more than about 40 rows
   [\#2206](https://github.com/rspatial/terra/issues/2206) by Acanthiza
-- `crop` to disk treated valid `INT2U` values of 65535 as NoData when
+- `crop` to disk treated valid `INT2U` values of 65535 as missing when
   the source had no NoData tag
   [\#2207](https://github.com/rspatial/terra/issues/2207) by Jakub
   Nowosad
+- `crop` with `mask=TRUE` on a raster opened with the multidimensional
+  API ignored the cropping window
+  [\#2212](https://github.com/rspatial/terra/issues/2212) by Ondřej
+  Ledvinka
+- `init` with a function failed on a multi-source SpatRaster
+  (`the condition has length > 1` in `writeStop`) after the `mask`
+  argument was added
+- `aggregate<SpatVector>` by more than one variable failed with when a
+  grouping field had `NA`
+- scatterplot of two rasters did not work when supplying xlim/ylim
+  arguments [\#2230](https://github.com/rspatial/terra/issues/2230) by
+  Agustín Lobo
 
 ### enhancements
 
@@ -31,9 +43,10 @@
 - `init` gains argument `mask=TRUE` to set output cells to `NA` where
   `x` is `NA` [\#2194](https://github.com/rspatial/terra/issues/2194) by
   Márcia Barbosa
-- `focal` now errors if `NAonly` or `pad` (arguments from
+- `focal` now errors if `NAonly` is used, and ignores `pad` with a
+  warning (arguments from
   [`raster::focal`](https://rspatial.github.io/terra/reference/focal.html))
-  are used [\#2189](https://github.com/rspatial/terra/issues/2189) by
+  [\#2189](https://github.com/rspatial/terra/issues/2189) by
   leunissene-ESNZ
 - `writeValues` gains arguments `col` and `ncols` like `readValues`
   [\#2188](https://github.com/rspatial/terra/issues/2188) by kbvernon
@@ -43,6 +56,30 @@
 - removed spurious “missing geotransform” warning for some file when
   using `rast(..., md=TRUE)`
   [\#2208](https://github.com/rspatial/terra/issues/2208) by Kodi Arfer
+- `shift` gains argument `to` to center an object on a point or on the
+  extent of another object
+  [\#2201](https://github.com/rspatial/terra/issues/2201) by Márcia
+  Barbosa
+- `text<SpatVector>` gains argument `fit` to attempt to plot labels
+  entirely inside their corresponding polygon
+- `plot<SpatRaster>` gains arguments `blend` and `blendfun` to combine
+  the mapped colors (and alpha) of `x` with another raster
+  (e.g. hillshade with “multiply”)
+- `selectHighest` has new argument `ties` to choose exactly `n` cells
+  (`"first"`, the default) or all cells with the `n` extreme values
+  (`"all"`)
+- continuous `plot` legends with `plg$x` of `"left"`/`"right"`,
+  `"topleft"`/`"topright"` and `"bottomleft"`/`"bottomright"` now share
+  `size` and only differ in vertical alignment
+- categorical `plot` legends accept an `"...-out"` placement keyword
+  (e.g. `"bottomleft-out"`, `"top-out"`) to draw the legend outside the
+  map; the default is `"topright-out"`
+  [\#2219](https://github.com/rspatial/terra/issues/2219)
+- `hull` gains argument `percent` to use only the features closest to
+  the centroid [\#2217](https://github.com/rspatial/terra/issues/2217)
+  by Márcia Barbosa
+- Fixed parenthesis in multidimensional raster print of dimensions
+  [\#2226](https://github.com/rspatial/terra/pull/2226) by Sinkleberg
 
 ### new
 
@@ -50,6 +87,12 @@
   using the terra C++ implementation
 - `distValues` to compute the distance from the (environmental) values
   at sites to these values in each raster cell.
+- `plot` methods for SpatRasterCollection and SpatRasterDataset
+  [\#2199](https://github.com/rspatial/terra/issues/2199) by Márcia
+  Barbosa
+- `selectSize<SpatVector>` method to select polygons by size
+  [\#2215](https://github.com/rspatial/terra/pull/2215) by Márcia
+  Barbosa
 
 ## version 1.9-50
 
