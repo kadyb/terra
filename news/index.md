@@ -1,6 +1,51 @@
 # Changelog
 
-## version 1.9-59
+## version 1.9-61
+
+### bug fixes
+
+- reading a NetCDF with the classic driver with GDAL 3.12.3 through
+  3.13.1 forced north-up files bottom-up when a GeoTransform attribute
+  is present. This flipped the values vertically and terra now corrects
+  this for these GDAL versions.
+- `spatSample<SpatVector>` could return fewer points than requested for
+  polygons whose bounding box is much larger than their area, such as
+  USA in lon/lat [\#2233](https://github.com/rspatial/terra/issues/2233)
+  by Tyler Smith.
+
+### enhancements
+
+- `plot(main=TRUE)` uses the layer or column name as the title for a
+  single layer or column
+  [\#2237](https://github.com/rspatial/terra/issues/2237) by Márcia
+  Barbosa
+- `divide<SpatRaster>` is much faster for larger values of `n`
+  [\#2239](https://github.com/rspatial/terra/issues/2239) by Márcia
+  Barbosa
+- `divide<SpatRaster>` gains argument `split`: `"values"` (the default)
+  balances cell-value sums, `"notNA"` the number of non-NA cells,
+  `"cells"` the number of cells
+  [\#2238](https://github.com/rspatial/terra/issues/2238) by Márcia
+  Barbosa
+- more efficient VRT reading
+  [\#2224](https://github.com/rspatial/terra/pull/2224) by Mike Sumner
+- `writeCDF` writes factor levels as CF flag attributes, and reading the
+  file restores the categories
+  [\#2228](https://github.com/rspatial/terra/issues/2228) by Kodi Arfer
+- `centroids<SpatVector>` gains argument “geoms=TRUE” and
+  `centroids<SpatRaster>` gains argument “na.rm=TRUE”. Both gain
+  “lonlat=FALSE” and “data.frame=FALSE” (the latter changes the default
+  for SpatRaster to align it with the SpatVector method
+  [\#2234](https://github.com/rspatial/terra/issues/2234) by Márcia
+  Barbosa
+
+### new
+
+## version 1.9-60
+
+CRAN release: 2026-11-20
+
+Released 2026-11-19
 
 ### bug fixes
 
@@ -32,6 +77,10 @@
 - scatterplot of two rasters did not work when supplying xlim/ylim
   arguments [\#2230](https://github.com/rspatial/terra/issues/2230) by
   Agustín Lobo
+- a rescaled spatstat image was not imported correctly, it applied the
+  scale factor to the values
+  [\#2236](https://github.com/rspatial/terra/issues/2236) by Manny
+  Gimond
 
 ### enhancements
 
