@@ -29,9 +29,7 @@ sapp(x, fun, ..., filename="", overwrite=FALSE, wopt=list())
   and can be applied to each layer of `x` (e.g.
   [`terrain`](https://rspatial.github.io/terra/reference/terrain.md));
   if `x` is a `SpatRasterDataset`: a function that is applied to all
-  layers of the SpatRasters in `x` (e.g. `mean`
-
-)
+  layers of the SpatRasters in `x` (e.g. `mean`)
 
 - ...:
 
